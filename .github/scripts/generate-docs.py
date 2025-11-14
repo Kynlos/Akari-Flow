@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """
-Symbol Capsules Documentation Generator for CI/CD
+Auto Documentation Generator for CI/CD
 
-Reads changed files, extracts symbols, sends to Groq API for documentation.
-88% more efficient than sending full files.
+Reads changed files and sends to Groq API for documentation generation.
 """
 
 import os
@@ -17,86 +16,37 @@ GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
 GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'
 MODEL = 'llama-3.3-70b-versatile'  # Fast and capable
 
-def extract_symbols(file_path, content):
-    """Extract symbols from code file"""
-    symbols = []
-    
-    # Classes
-    for match in re.finditer(r'^(export\s+)?class\s+(\w+)(?:\s+extends\s+(\w+))?', content, re.MULTILINE):
-        export_marker = '▸' if match.group(1) else ' '
-        extends = f' extends {match.group(3)}' if match.group(3) else ''
-        symbols.append({
-            'type': 'class',
-            'name': match.group(2),
-            'signature': f'{export_marker}class {match.group(2)}{extends}',
-            'exported': bool(match.group(1))
-        })
-    
-    # Functions
-    for match in re.finditer(r'^(export\s+)?(?:async\s+)?function\s+(\w+)\s*\([^)]*\)', content, re.MULTILINE):
-        export_marker = '▸' if match.group(1) else ' '
-        symbols.append({
-            'type': 'function',
-            'name': match.group(2),
-            'signature': f'{export_marker}{match.group(0).strip()}',
-            'exported': bool(match.group(1))
-        })
-    
-    # Interfaces
-    for match in re.finditer(r'^(export\s+)?interface\s+(\w+)', content, re.MULTILINE):
-        export_marker = '▸' if match.group(1) else ' '
-        symbols.append({
-            'type': 'interface',
-            'name': match.group(2),
-            'signature': f'{export_marker}interface {match.group(2)}',
-            'exported': bool(match.group(1))
-        })
-    
-    # Types
-    for match in re.finditer(r'^(export\s+)?type\s+(\w+)', content, re.MULTILINE):
-        export_marker = '▸' if match.group(1) else ' '
-        symbols.append({
-            'type': 'type',
-            'name': match.group(2),
-            'signature': f'{export_marker}type {match.group(2)}',
-            'exported': bool(match.group(1))
-        })
-    
-    return symbols
 
-def build_symbol_index(files_data):
-    """Build compressed symbol index"""
-    index = "Symbol Index:\n\n"
-    
-    for file_path, symbols in files_data.items():
-        if not symbols:
-            continue
-        
-        index += f"[{Path(file_path).name}]\n"
-        for sym in symbols:
-            index += f"  {sym['signature']}\n"
-        index += "\n"
-    
-    return index
 
-def generate_documentation(symbol_index, file_list):
+def build_file_context(files_data):
+    """Build file context with full code"""
+    context = "Code Files:\n\n"
+    
+    for file_path, content in files_data.items():
+        context += f"## {Path(file_path).name}\n"
+        context += f"```typescript\n{content}\n```\n\n"
+    
+    return context
+
+def generate_documentation(file_context, file_list):
     """Call Groq API to generate documentation"""
     
     if not GROQ_API_KEY:
         print("ERROR: GROQ_API_KEY not set")
         sys.exit(1)
     
-    prompt = f"""Generate comprehensive API documentation for the following code changes.
+    prompt = f"""Generate comprehensive API documentation for the following code files.
 
-{symbol_index}
+{file_context}
 
 Files changed: {', '.join(file_list)}
 
 Generate documentation that includes:
 1. Overview of changes
-2. New/modified functions and classes
-3. Usage examples for new exports
-4. Migration notes if signatures changed
+2. All functions and classes
+3. Usage examples for exports
+4. Parameter descriptions
+5. Return value documentation
 
 Format as GitHub-flavored Markdown."""
 
@@ -111,7 +61,7 @@ Format as GitHub-flavored Markdown."""
             'messages': [
                 {
                     'role': 'system',
-                    'content': 'You are a technical documentation expert. Generate clear, concise API documentation from Symbol Capsules (compressed code representations).'
+                    'content': 'You are a technical documentation expert. Generate clear, comprehensive API documentation from code.'
                 },
                 {
                     'role': 'user',
@@ -131,26 +81,18 @@ Format as GitHub-flavored Markdown."""
     data = response.json()
     return data['choices'][0]['message']['content']
 
-def calculate_savings(files_data, symbol_index):
-    """Calculate token savings vs traditional approach"""
-    total_file_size = sum(len(content) for _, content in files_data.items())
-    traditional_tokens = total_file_size // 4
-    capsule_tokens = len(symbol_index) // 4
-    
-    savings = traditional_tokens - capsule_tokens
-    percent = (savings / traditional_tokens * 100) if traditional_tokens > 0 else 0
-    cost_saved = savings * (3 / 1_000_000)  # Claude Sonnet 4.5 pricing
+def calculate_tokens(file_context):
+    """Calculate token count"""
+    total_tokens = len(file_context) // 4
+    cost = total_tokens * (0.075 / 1_000_000)  # Groq pricing
     
     return {
-        'traditional': traditional_tokens,
-        'capsules': capsule_tokens,
-        'saved': savings,
-        'percent': percent,
-        'cost': cost_saved
+        'tokens': total_tokens,
+        'cost': cost
     }
 
 def main():
-    print("Symbol Capsules CI/CD Documentation Generator")
+    print("Auto Documentation Generator")
     print("="*80)
     
     # Read changed files
@@ -171,9 +113,8 @@ def main():
     
     print(f"Processing {len(code_files)} changed files\n")
     
-    # Extract symbols from each file
+    # Read file contents
     files_data = {}
-    symbols_by_file = {}
     
     for file_path in code_files:
         if not os.path.exists(file_path):
@@ -185,36 +126,26 @@ def main():
                 content = f.read()
             
             files_data[file_path] = content
-            symbols = extract_symbols(file_path, content)
-            symbols_by_file[file_path] = symbols
-            
-            print(f"  OK: {file_path} ({len(symbols)} symbols)")
+            print(f"  OK: {file_path} ({len(content)} chars)")
         except Exception as e:
             print(f"  ERROR: {file_path} - {e}")
     
-    if not symbols_by_file:
-        print("\nNo symbols extracted")
+    if not files_data:
+        print("\nNo files to process")
         sys.exit(0)
     
-    # Build symbol index
-    symbol_index = build_symbol_index(symbols_by_file)
+    # Build file context
+    file_context = build_file_context(files_data)
     
-    print(f"\nSymbol Index Preview:")
-    print("-"*80)
-    print(symbol_index[:500] + "..." if len(symbol_index) > 500 else symbol_index)
-    print("-"*80)
-    
-    # Calculate savings
-    savings = calculate_savings(files_data, symbol_index)
-    print(f"\nToken Efficiency:")
-    print(f"  Traditional: {savings['traditional']} tokens")
-    print(f"  Capsules: {savings['capsules']} tokens")
-    print(f"  Saved: {savings['saved']} tokens ({savings['percent']:.1f}%)")
-    print(f"  Cost saved: ${savings['cost']:.6f}")
+    # Calculate tokens
+    stats = calculate_tokens(file_context)
+    print(f"\nToken Usage:")
+    print(f"  Total: {stats['tokens']:,} tokens")
+    print(f"  Cost: ${stats['cost']:.6f}")
     
     # Generate documentation
     print(f"\nGenerating documentation via Groq API ({MODEL})...")
-    documentation = generate_documentation(symbol_index, code_files)
+    documentation = generate_documentation(file_context, code_files)
     
     print("\nGenerated Documentation:")
     print("="*80)
@@ -230,13 +161,11 @@ def main():
 
 ---
 
-**Symbol Capsules Efficiency:**
-- Traditional approach: {savings['traditional']:,} tokens
-- Symbol Capsules: {savings['capsules']:,} tokens  
-- **Saved: {savings['saved']:,} tokens ({savings['percent']:.1f}%)** 💰
-- Cost saved: ${savings['cost']:.6f}
+**Token Usage:**
+- Total tokens: {stats['tokens']:,}
+- Cost: ${stats['cost']:.6f}
 
-*Documentation generated using Symbol Capsules - 88% more efficient than traditional approaches.*
+*Documentation automatically generated from code changes.*
 """
     
     with open('doc_output.md', 'w') as f:

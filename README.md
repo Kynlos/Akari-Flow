@@ -1,6 +1,6 @@
-# Symbol Capsules CI/CD - Auto-Documentation
+# Auto-Documentation CI/CD
 
-GitHub Actions workflow that automatically generates documentation when code changes, using Symbol Capsules for 88% token savings.
+GitHub Actions workflow that automatically generates documentation when code changes.
 
 ## Setup for https://github.com/Kynlos/CI-CD-Monitor-Test
 
@@ -38,19 +38,17 @@ git push
 ### On Every Commit to Main:
 
 1. **Detects changed files** - Only processes .ts/.js/.py files that changed
-2. **Extracts symbols** - Functions, classes, interfaces, types
-3. **Builds Symbol Index** - Compressed representation (~88% smaller)
-4. **Calls Groq API** - Generates documentation from symbols
-5. **Commits docs** - Updates `API-DOCS.md` automatically
+2. **Reads file contents** - Gets the full code
+3. **Calls Groq API** - Generates documentation
+4. **Commits docs** - Updates `API-DOCS.md` automatically
 
 ### On Every Pull Request:
 
-1. **Same extraction process**
+1. **Same process**
 2. **Posts PR comment** with:
    - Generated documentation
-   - List of changed symbols
-   - Token savings calculation
-   - Cost savings
+   - List of changes
+   - Token usage statistics
 
 ## Example Output
 
@@ -77,13 +75,11 @@ git push
 
 ---
 
-**Symbol Capsules Efficiency:**
-- Traditional approach: 3,240 tokens
-- Symbol Capsules: 420 tokens
-- **Saved: 2,820 tokens (87.0%)** 💰
-- Cost saved: $0.000008
+**Token Usage:**
+- Total tokens: 3,240
+- Cost: $0.000243
 
-*Documentation generated using Symbol Capsules - 88% more efficient than traditional approaches.*
+*Documentation automatically generated from code changes.*
 ```
 
 ### Committed File (API-DOCS.md):
@@ -110,39 +106,14 @@ Validates JWT token and returns authenticated user object.
 
 ## Benefits
 
-### Cost Savings
+### Automated Documentation
 
-**Traditional approach (sending full files):**
-- 10 files changed × 5KB each = 50KB
-- ~12,500 tokens × $0.000003 (Claude) = $0.0375 per commit
+- **Never outdated** - Regenerated on every commit
+- **Consistent format** - LLM ensures uniform style
+- **PR reviews** - Reviewers see what APIs changed
+- **Breaking changes** - Automatically highlighted
 
-**Symbol Capsules approach:**
-- 10 files × 20 symbols × 50 tokens = 10,000 tokens compressed  
-- ~1,500 tokens × $0.000003 = $0.0045 per commit
 
-**Savings: $0.033 per commit (88% reduction)**
-
-**Annual (for active repo):**
-- 1,000 commits/year
-- Traditional: $37.50/year
-- Capsules: $4.50/year
-- **Saves: $33/year per repo**
-
-**Organization with 100 repos:**
-- **Saves: $3,300/year**
-
-### Speed Benefits
-
-- **Faster API calls** - Fewer tokens = faster response
-- **Parallel processing** - Can document multiple files simultaneously
-- **Lower rate limits** - Fewer tokens = more requests possible
-
-### Quality Benefits
-
-- **Consistent docs** - Every commit auto-documented
-- **No outdated docs** - Regenerated on every change
-- **PR reviews** - Reviewers see exactly what APIs changed
-- **Breaking changes** - Automatically highlighted when signatures change
 
 ## Customization
 
@@ -234,13 +205,4 @@ Settings → Secrets and variables → Actions → New repository secret
 
 ## Cost Analysis
 
-**Your repo with this setup:**
-- Average 50 commits/month
-- Average 5 files changed per commit
-- Average 10 symbols per file
 
-**Traditional:** 50 commits × $0.0375 = **$1.88/month**
-**Capsules:** 50 commits × $0.0045 = **$0.23/month**
-**Savings:** **$1.65/month = $19.80/year**
-
-For a single repo this is modest, but **scales linearly with repos and commit frequency**.
