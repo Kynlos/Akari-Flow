@@ -1,0 +1,83 @@
+name: Auto-Documentation with Symbol Capsules
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - '**.ts'
+      - '**.js'
+      - '**.tsx'
+      - '**.jsx'
+      - '**.py'
+  pull_request:
+    paths:
+      - '**.ts'
+      - '**.js'
+      - '**.tsx'
+      - '**.jsx'
+      - '**.py'
+
+jobs:
+  auto-document:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests
+      
+      - name: Detect changed files
+        id: changes
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} > changed_files.txt
+          else
+            git diff --name-only HEAD~1 HEAD > changed_files.txt
+          fi
+          
+          echo "Changed files:"
+          cat changed_files.txt
+      
+      - name: Generate documentation from Symbol Capsules
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python .github/scripts/generate-docs.py
+      
+      - name: Post PR comment with documentation
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            
+            if (fs.existsSync('doc_output.md')) {
+              const docContent = fs.readFileSync('doc_output.md', 'utf8');
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: docContent
+              });
+            }
+      
+      - name: Commit updated docs
+        if: github.event_name == 'push'
+        run: |
+          if [ -f "API-DOCS.md" ]; then
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add API-DOCS.md
+            git diff --staged --quiet || git commit -m "docs: Auto-update API documentation [skip ci]"
+            git push
+          fi
