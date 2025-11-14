@@ -18,6 +18,7 @@ export function formatString(input: string, options?: StringOptions): string {
     result = result.toLowerCase();
   }
   
+  // Small update to trigger bot
   return result;
 }
 
