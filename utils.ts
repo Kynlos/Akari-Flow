@@ -7,6 +7,13 @@ export interface StringOptions {
   lowercase?: boolean;
 }
 
+/**
+ * Formats a string according to the provided options.
+ *
+ * @param input - The string to format.
+ * @param options - Optional formatting options.
+ * @returns The formatted string.
+ */
 export function formatString(input: string, options?: StringOptions): string {
   let result = input;
   
@@ -22,6 +29,12 @@ export function formatString(input: string, options?: StringOptions): string {
   return result;
 }
 
+/**
+ * Parses a JSON string into an object.
+ *
+ * @param jsonString - The JSON string to parse.
+ * @returns The parsed object, or `null` if parsing fails.
+ */
 export function parseJSON<T>(jsonString: string): T | null {
   try {
     return JSON.parse(jsonString);
