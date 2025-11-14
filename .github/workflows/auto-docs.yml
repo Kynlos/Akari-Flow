@@ -57,6 +57,28 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python .github/scripts/generate-docs.py
       
+      - name: Check for breaking changes
+        if: github.event_name == 'pull_request'
+        id: breaking_check
+        run: |
+          if [ -f "breaking_changes.txt" ]; then
+            echo "detected=true" >> $GITHUB_OUTPUT
+          else
+            echo "detected=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Add breaking change label
+        if: github.event_name == 'pull_request' && steps.breaking_check.outputs.detected == 'true'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['breaking-change']
+            });
+      
       - name: Post PR comment with documentation
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v6
@@ -75,19 +97,18 @@ jobs:
               });
             }
       
-      - name: Commit updated docs
+      - name: Commit updated docs and changelog
         if: github.event_name == 'push'
         run: |
-          if [ -d "docs" ]; then
-            git config --local user.email "github-actions[bot]@users.noreply.github.com"
-            git config --local user.name "github-actions[bot]"
-            git add docs/
-            if ! git diff --staged --quiet; then
-              git commit -m "docs: Auto-update documentation [skip ci]"
-              git push
-            else
-              echo "No documentation changes to commit"
-            fi
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          [ -d "docs" ] && git add docs/
+          [ -f "CHANGELOG.md" ] && git add CHANGELOG.md
+          
+          if ! git diff --staged --quiet; then
+            git commit -m "docs: Auto-update documentation and changelog [skip ci]"
+            git push
           else
-            echo "No docs folder generated"
+            echo "No documentation changes to commit"
           fi
