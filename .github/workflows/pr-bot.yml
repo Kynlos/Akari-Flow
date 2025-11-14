@@ -1,0 +1,79 @@
+name: Interactive PR Bot
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  respond:
+    # Only run on PR comments
+    if: github.event.issue.pull_request
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout PR code
+        uses: actions/checkout@v3
+        with:
+          ref: refs/pull/${{ github.event.issue.number }}/head
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install requests
+      
+      - name: Get PR changed files
+        id: pr_files
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const pr = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+            
+            const files = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+            
+            const fs = require('fs');
+            const fileList = files.data.map(f => f.filename).join('\n');
+            fs.writeFileSync('pr_files.txt', fileList);
+            
+            return files.data.length;
+      
+      - name: Answer question
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          COMMENT_USER: ${{ github.event.comment.user.login }}
+        run: python .github/scripts/answer-question.py
+      
+      - name: Post response
+        if: always()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            
+            if (fs.existsSync('bot_response.md')) {
+              const response = fs.readFileSync('bot_response.md', 'utf8');
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: response
+              });
+            }
