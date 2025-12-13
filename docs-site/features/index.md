@@ -12,15 +12,19 @@ User-facing feature documentation and guides.
 
 - **[Auth System](auth-system.md)** - Feature guide and tutorial
 - **[Authentication](authentication.md)** - Feature guide and tutorial
+- **[Cicd Cli](cicd-cli.md)** - Feature guide and tutorial
 - **[Code Analyzer](code-analyzer.md)** - Feature guide and tutorial
 - **[Data Layer](data-layer.md)** - Feature guide and tutorial
+- **[Debug Import](debug-import.md)** - Feature guide and tutorial
+- **[Diagram Generator](diagram-generator.md)** - Feature guide and tutorial
 - **[Email Service](email-service.md)** - Feature guide and tutorial
 - **[Llm](llm.md)** - Feature guide and tutorial
 - **[Notification System](notification-system.md)** - Feature guide and tutorial
 - **[Pages Manager](pages-manager.md)** - Feature guide and tutorial
 - **[Payment System](payment-system.md)** - Feature guide and tutorial
+- **[Static Site Generator](static-site-generator.md)** - Feature guide and tutorial
 
-**Total:** 9 features
+**Total:** 13 features
 
 ---
 

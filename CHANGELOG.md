@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 
 ## [2025-12-13]
 
+### diagram_generator.py
+
+### ✨ Added
+- `DiagramGenerator` (class)
+- `main` (function)
+- `parse_file` (function)
+- `generate_class_diagram` (function)
+
+### site_generator.py
+
+### ✨ Added
+- `build_site` (function)
+
+### cicd-cli.py
+
+### ✨ Added
+- `run_script` (function)
+- `main` (function)
+
+### test_diagram_generator.py
+
+### ✨ Added
+- `TestDiagramGenerator` (class)
+- `test_python_class_diagram` (function)
+- `test_regex_diagram` (function)
+
+## [2025-12-13]
+
 ### code-analyzer.py
 
 ### ✨ Added

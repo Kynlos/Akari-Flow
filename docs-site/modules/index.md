@@ -13,13 +13,16 @@ Module architecture and design documentation.
 - **[Auth System](auth-system.md)** - Module architecture and design
 - **[Code Analyzer](code-analyzer.md)** - Module architecture and design
 - **[Data Layer](data-layer.md)** - Module architecture and design
+- **[Debug Import](debug-import.md)** - Module architecture and design
+- **[Diagram Generator](diagram-generator.md)** - Module architecture and design
 - **[Email Service](email-service.md)** - Module architecture and design
 - **[Llm](llm.md)** - Module architecture and design
 - **[Notification System](notification-system.md)** - Module architecture and design
 - **[Pages Manager](pages-manager.md)** - Module architecture and design
 - **[Payment Processor](payment-processor.md)** - Module architecture and design
+- **[Test Diagram Generator](test-diagram-generator.md)** - Module architecture and design
 
-**Total:** 8 modules
+**Total:** 11 modules
 
 ---
 

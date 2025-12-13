@@ -11,8 +11,10 @@ Low-level API documentation for all functions, classes, and interfaces.
 ## Available APIs
 
 - **[Authentication](authentication.md)** - Technical API documentation
+- **[Cicd Cli](cicd-cli.md)** - Technical API documentation
 - **[Code Analyzer](code-analyzer.md)** - Technical API documentation
 - **[Database](database.md)** - Technical API documentation
+- **[Diagram Generator](diagram-generator.md)** - Technical API documentation
 - **[Email Service](email-service.md)** - Technical API documentation
 - **[Llm](llm.md)** - Technical API documentation
 - **[Notifications](notifications.md)** - Technical API documentation
@@ -20,8 +22,10 @@ Low-level API documentation for all functions, classes, and interfaces.
 - **[Pages Manager](pages-manager.md)** - Technical API documentation
 - **[Payment Processor](payment-processor.md)** - Technical API documentation
 - **[Payments](payments.md)** - Technical API documentation
+- **[Site Generator](site-generator.md)** - Technical API documentation
+- **[Test Diagram Generator](test-diagram-generator.md)** - Technical API documentation
 
-**Total:** 10 API pages
+**Total:** 14 API pages
 
 ---
 

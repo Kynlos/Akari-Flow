@@ -1,0 +1,283 @@
+[
+  {
+    "file": ".github/scripts/diagram_generator.py",
+    "language": "python",
+    "quality_score": {
+      "total": 57,
+      "documentation": 7,
+      "complexity": 10,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 7,
+          "max": 30,
+          "details": "1/7 items documented"
+        },
+        "complexity": {
+          "score": 10,
+          "max": 30,
+          "details": "27 decision points (AST)"
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": "0 long lines detected"
+        }
+      },
+      "grade": "C"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 68,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 96,
+        "suggestion": "Review algorithmic complexity"
+      }
+    ]
+  },
+  {
+    "file": ".github/scripts/generate-docs.py",
+    "language": "python",
+    "quality_score": {
+      "total": 85,
+      "documentation": 30,
+      "complexity": 20,
+      "maintainability": 35,
+      "breakdown": {
+        "documentation": {
+          "score": 30,
+          "max": 30,
+          "details": "8/9 items documented"
+        },
+        "complexity": {
+          "score": 20,
+          "max": 30,
+          "details": "72 decision points (AST)"
+        },
+        "maintainability": {
+          "score": 35,
+          "max": 40,
+          "details": "1 long lines detected"
+        }
+      },
+      "grade": "A"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 79,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 90,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 217,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 222,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 227,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 232,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 259,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 344,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 372,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 458,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "large_function",
+        "severity": "LOW",
+        "description": "Large function \"main\" (171 lines)",
+        "line": 330,
+        "suggestion": "Break into smaller functions"
+      }
+    ]
+  },
+  {
+    "file": ".github/scripts/site_generator.py",
+    "language": "python",
+    "quality_score": {
+      "total": 60,
+      "documentation": 0,
+      "complexity": 30,
+      "maintainability": 30,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": "0/1 items documented"
+        },
+        "complexity": {
+          "score": 30,
+          "max": 30,
+          "details": "12 decision points (AST)"
+        },
+        "maintainability": {
+          "score": 30,
+          "max": 40,
+          "details": "1 long lines detected"
+        }
+      },
+      "grade": "C+"
+    },
+    "security_vulnerabilities": [
+      {
+        "category": "command_injection",
+        "severity": "HIGH",
+        "description": "Dangerous use of os.system()",
+        "line": 246,
+        "code": "os.system('pip install markdown')"
+      }
+    ],
+    "performance_issues": []
+  },
+  {
+    "file": "cicd-cli.py",
+    "language": "python",
+    "quality_score": {
+      "total": 60,
+      "documentation": 0,
+      "complexity": 25,
+      "maintainability": 35,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": "0/2 items documented"
+        },
+        "complexity": {
+          "score": 25,
+          "max": 30,
+          "details": "8 decision points (AST)"
+        },
+        "maintainability": {
+          "score": 35,
+          "max": 40,
+          "details": "0 long lines detected"
+        }
+      },
+      "grade": "C+"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "debug_import.py",
+    "language": "python",
+    "quality_score": {
+      "total": 90,
+      "documentation": 30,
+      "complexity": 20,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 30,
+          "max": 30,
+          "details": "0/0 items documented"
+        },
+        "complexity": {
+          "score": 20,
+          "max": 30,
+          "details": "2 decision points (AST)"
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": "0 long lines detected"
+        }
+      },
+      "grade": "A+"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "tests/test_diagram_generator.py",
+    "language": "python",
+    "quality_score": {
+      "total": 70,
+      "documentation": 0,
+      "complexity": 30,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": "0/3 items documented"
+        },
+        "complexity": {
+          "score": 30,
+          "max": 30,
+          "details": "1 decision points (AST)"
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": "0 long lines detected"
+        }
+      },
+      "grade": "B"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  }
+]

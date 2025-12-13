@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-12-13T22:39:40.661936",
+  "last_updated": "2025-12-13T22:46:45.110173",
   "description": "Persistent mapping of source files to Wiki pages. DO NOT DELETE - used by wiki-manager.py to ensure consistency.",
   "file_to_page": {
     "email-service.ts": "Email-Service",
@@ -15,7 +15,12 @@
     "auth.ts": "Authentication-API",
     "payment-processor.ts": "Payment-Processor",
     "database.ts": "Database-Layer",
-    "llm.ts": "Llm"
+    "llm.ts": "Llm",
+    "diagram_generator.ts": "Diagram-Generator",
+    "site_generator.ts": "Site-Generator",
+    "cicd-cli.py": "Cicd-Cli",
+    "debug_import.py": "Debug-Import",
+    "test_diagram_generator.ts": "Testing-Guide"
   },
   "page_metadata": {
     "Email-Service": {
@@ -37,7 +42,7 @@
       "files": [
         "generate-docs.ts"
       ],
-      "last_updated": "2025-11-15T21:15:34.220035"
+      "last_updated": "2025-12-13T22:46:43.941260"
     },
     "Notification-Service": {
       "created": "2025-11-15T18:45:30.577850",
@@ -102,6 +107,41 @@
         "llm.ts"
       ],
       "last_updated": "2025-11-16T00:19:37.346123"
+    },
+    "Diagram-Generator": {
+      "created": "2025-12-13T22:46:43.941042",
+      "files": [
+        "diagram_generator.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:43.941048"
+    },
+    "Site-Generator": {
+      "created": "2025-12-13T22:46:44.221013",
+      "files": [
+        "site_generator.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:44.221019"
+    },
+    "Cicd-Cli": {
+      "created": "2025-12-13T22:46:44.612121",
+      "files": [
+        "cicd-cli.py"
+      ],
+      "last_updated": "2025-12-13T22:46:44.612127"
+    },
+    "Debug-Import": {
+      "created": "2025-12-13T22:46:44.838550",
+      "files": [
+        "debug_import.py"
+      ],
+      "last_updated": "2025-12-13T22:46:44.838557"
+    },
+    "Testing-Guide": {
+      "created": "2025-12-13T22:46:45.110163",
+      "files": [
+        "test_diagram_generator.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:45.110169"
     }
   }
 }

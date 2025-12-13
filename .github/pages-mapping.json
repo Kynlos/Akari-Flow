@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-12-13T22:39:43.692040",
+  "last_updated": "2025-12-13T22:47:03.090881",
   "file_to_page": {
     "pages-manager.ts": [
       "api/pages-manager.md",
@@ -49,6 +49,27 @@
       "api/code-analyzer.md",
       "features/code-analyzer.md",
       "modules/code-analyzer.md"
+    ],
+    "diagram_generator.ts": [
+      "api/diagram-generator.md",
+      "features/diagram-generator.md",
+      "modules/diagram-generator.md"
+    ],
+    "site_generator.ts": [
+      "api/site-generator.md",
+      "features/static-site-generator.md"
+    ],
+    "cicd-cli.ts": [
+      "api/cicd-cli.md",
+      "features/cicd-cli.md"
+    ],
+    "debug_import.ts": [
+      "modules/debug-import.md",
+      "features/debug-import.md"
+    ],
+    "test_diagram_generator.ts": [
+      "api/test-diagram-generator.md",
+      "modules/test-diagram-generator.md"
     ]
   },
   "page_metadata": {
@@ -274,6 +295,94 @@
         "code-analyzer.ts"
       ],
       "last_updated": "2025-12-13T22:39:43.690990",
+      "last_action": "create"
+    },
+    "api/diagram-generator.md": {
+      "created": "2025-12-13T22:46:48.826140",
+      "sources": [
+        "diagram_generator.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:48.826149",
+      "last_action": "create"
+    },
+    "features/diagram-generator.md": {
+      "created": "2025-12-13T22:46:48.826265",
+      "sources": [
+        "diagram_generator.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:48.826269",
+      "last_action": "create"
+    },
+    "modules/diagram-generator.md": {
+      "created": "2025-12-13T22:46:48.826362",
+      "sources": [
+        "diagram_generator.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:48.826366",
+      "last_action": "create"
+    },
+    "api/site-generator.md": {
+      "created": "2025-12-13T22:46:53.116854",
+      "sources": [
+        "site_generator.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:53.116863",
+      "last_action": "create"
+    },
+    "features/static-site-generator.md": {
+      "created": "2025-12-13T22:46:53.116968",
+      "sources": [
+        "site_generator.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:53.116972",
+      "last_action": "create"
+    },
+    "api/cicd-cli.md": {
+      "created": "2025-12-13T22:46:56.241100",
+      "sources": [
+        "cicd-cli.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:56.241109",
+      "last_action": "create"
+    },
+    "features/cicd-cli.md": {
+      "created": "2025-12-13T22:46:56.241204",
+      "sources": [
+        "cicd-cli.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:56.241207",
+      "last_action": "create"
+    },
+    "modules/debug-import.md": {
+      "created": "2025-12-13T22:46:59.527902",
+      "sources": [
+        "debug_import.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:59.527910",
+      "last_action": "create"
+    },
+    "features/debug-import.md": {
+      "created": "2025-12-13T22:46:59.527997",
+      "sources": [
+        "debug_import.ts"
+      ],
+      "last_updated": "2025-12-13T22:46:59.528000",
+      "last_action": "create"
+    },
+    "api/test-diagram-generator.md": {
+      "created": "2025-12-13T22:47:03.089479",
+      "sources": [
+        "test_diagram_generator.ts"
+      ],
+      "last_updated": "2025-12-13T22:47:03.089489",
+      "last_action": "create"
+    },
+    "modules/test-diagram-generator.md": {
+      "created": "2025-12-13T22:47:03.089584",
+      "sources": [
+        "test_diagram_generator.ts"
+      ],
+      "last_updated": "2025-12-13T22:47:03.089587",
       "last_action": "create"
     }
   },
