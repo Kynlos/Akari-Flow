@@ -21,8 +21,9 @@ Module architecture and design documentation.
 - **[Pages Manager](pages-manager.md)** - Module architecture and design
 - **[Payment Processor](payment-processor.md)** - Module architecture and design
 - **[Test Diagram Generator](test-diagram-generator.md)** - Module architecture and design
+- **[Wiki Manager](wiki-manager.md)** - Module architecture and design
 
-**Total:** 11 modules
+**Total:** 12 modules
 
 ---
 

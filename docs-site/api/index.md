@@ -25,8 +25,9 @@ Low-level API documentation for all functions, classes, and interfaces.
 - **[Send Notifications](send-notifications.md)** - Technical API documentation
 - **[Site Generator](site-generator.md)** - Technical API documentation
 - **[Test Diagram Generator](test-diagram-generator.md)** - Technical API documentation
+- **[Wiki Manager](wiki-manager.md)** - Technical API documentation
 
-**Total:** 15 API pages
+**Total:** 16 API pages
 
 ---
 

@@ -23,8 +23,9 @@ User-facing feature documentation and guides.
 - **[Pages Manager](pages-manager.md)** - Feature guide and tutorial
 - **[Payment System](payment-system.md)** - Feature guide and tutorial
 - **[Static Site Generator](static-site-generator.md)** - Feature guide and tutorial
+- **[Wiki Manager](wiki-manager.md)** - Feature guide and tutorial
 
-**Total:** 13 features
+**Total:** 14 features
 
 ---
 

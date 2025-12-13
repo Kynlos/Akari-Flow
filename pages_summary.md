@@ -1,28 +1,16 @@
 # GitHub Pages Update Summary
 
-**Changes Made:** 6
+**Changes Made:** 3
 
-### send-notifications.ts -> api/send-notifications.md
+### wiki-manager.ts -> api/wiki-manager.md
 - **Action:** CREATE
-- **Reasoning:** The send-notifications script is a distinct notification service not covered by existing pages, requiring its own documentation page.
+- **Reasoning:** The wiki-manager script introduces a new functionality for automated wiki updates and is not covered by any existing API pages, so a dedicated page should be created.
 
-### send-notifications.ts -> features/notification-system.md
-- **Action:** APPEND
-- **Reasoning:** The send-notifications script extends the existing notification system feature, so it should be added to that page rather than creating a new one.
-
-### send-notifications.ts -> modules/notification-system.md
-- **Action:** APPEND
-- **Reasoning:** The send-notifications script extends the existing notification system; it fits naturally as an additional section in the Notification System documentation rather than creating a separate page.
-
-### send-notifications.ts -> api/send-notifications.md
+### wiki-manager.ts -> modules/wiki-manager.md
 - **Action:** CREATE
-- **Reasoning:** The send-notifications script is a distinct notification service not covered by existing pages, requiring its own documentation page.
+- **Reasoning:** The Wiki Manager is a distinct utility with its own mapping, LLM routing, and wiki update logic, not covered by existing pages, so it warrants a dedicated documentation page.
 
-### send-notifications.ts -> features/notification-system.md
-- **Action:** APPEND
-- **Reasoning:** The send-notifications script extends the existing notification system feature, so it should be added to that page rather than creating a new one.
-
-### send-notifications.ts -> modules/notification-system.md
-- **Action:** APPEND
-- **Reasoning:** The send-notifications script extends the existing notification system; it fits naturally as an additional section in the Notification System documentation rather than creating a separate page.
+### wiki-manager.ts -> features/wiki-manager.md
+- **Action:** CREATE
+- **Reasoning:** The wiki-manager script introduces a distinct capability for automated wiki routing and updates, which is not covered by any existing feature pages, so a dedicated page should be created.
 

@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-12-13T22:56:30.117783",
+  "last_updated": "2025-12-13T23:08:37.484924",
   "file_to_page": {
     "pages-manager.ts": [
       "api/pages-manager.md",
@@ -9,7 +9,12 @@
       "modules/pages-manager.md",
       "api/pages-manager-ts.md"
     ],
-    "wiki-manager.ts": "guides/wiki-manager.md",
+    "wiki-manager.ts": [
+      "guides/wiki-manager.md",
+      "api/wiki-manager.md",
+      "modules/wiki-manager.md",
+      "features/wiki-manager.md"
+    ],
     "auth.ts": [
       "api/authentication.md",
       "api/authentication.md",
@@ -398,6 +403,30 @@
         "send-notifications.ts"
       ],
       "last_updated": "2025-12-13T22:56:30.116022",
+      "last_action": "create"
+    },
+    "api/wiki-manager.md": {
+      "created": "2025-12-13T23:08:37.483365",
+      "sources": [
+        "wiki-manager.ts"
+      ],
+      "last_updated": "2025-12-13T23:08:37.483373",
+      "last_action": "create"
+    },
+    "modules/wiki-manager.md": {
+      "created": "2025-12-13T23:08:37.483483",
+      "sources": [
+        "wiki-manager.ts"
+      ],
+      "last_updated": "2025-12-13T23:08:37.483487",
+      "last_action": "create"
+    },
+    "features/wiki-manager.md": {
+      "created": "2025-12-13T23:08:37.483586",
+      "sources": [
+        "wiki-manager.ts"
+      ],
+      "last_updated": "2025-12-13T23:08:37.483592",
       "last_action": "create"
     }
   },

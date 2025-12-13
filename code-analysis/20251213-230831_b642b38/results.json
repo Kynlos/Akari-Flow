@@ -1,0 +1,61 @@
+[
+  {
+    "file": ".github/scripts/wiki-manager.py",
+    "language": "python",
+    "quality_score": {
+      "total": 85,
+      "documentation": 30,
+      "complexity": 20,
+      "maintainability": 35,
+      "breakdown": {
+        "documentation": {
+          "score": 30,
+          "max": 30,
+          "details": "12/14 items documented"
+        },
+        "complexity": {
+          "score": 20,
+          "max": 30,
+          "details": "58 decision points (AST)"
+        },
+        "maintainability": {
+          "score": 35,
+          "max": 40,
+          "details": "2 long lines detected"
+        }
+      },
+      "grade": "A"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 320,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 411,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 438,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 477,
+        "suggestion": "Review algorithmic complexity"
+      }
+    ]
+  }
+]
