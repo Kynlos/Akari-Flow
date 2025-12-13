@@ -263,11 +263,12 @@ Return ONLY the wiki page name, nothing else."""
 ```
 
 **Task:**
-1. If documenting NEW functions/classes → ADD as new section
 2. If UPDATING existing functions → REPLACE that section
 3. If similar content exists → MERGE and deduplicate
 4. Update "Last updated" timestamp to: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
 5. Maintain wiki structure and formatting
+6. ALWAYS USE METADATA (Author, Version) FROM THE NEW DOCUMENTATION
+7. REPLACE "Amp Team" with "Kynlo Akari" if found anywhere
 
 Return the COMPLETE merged wiki page.
 """
