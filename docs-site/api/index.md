@@ -11,6 +11,7 @@ Low-level API documentation for all functions, classes, and interfaces.
 ## Available APIs
 
 - **[Authentication](authentication.md)** - Technical API documentation
+- **[Code Analyzer](code-analyzer.md)** - Technical API documentation
 - **[Database](database.md)** - Technical API documentation
 - **[Email Service](email-service.md)** - Technical API documentation
 - **[Llm](llm.md)** - Technical API documentation
@@ -20,7 +21,7 @@ Low-level API documentation for all functions, classes, and interfaces.
 - **[Payment Processor](payment-processor.md)** - Technical API documentation
 - **[Payments](payments.md)** - Technical API documentation
 
-**Total:** 9 API pages
+**Total:** 10 API pages
 
 ---
 

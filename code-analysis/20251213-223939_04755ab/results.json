@@ -1,0 +1,82 @@
+[
+  {
+    "file": ".github/scripts/code-analyzer.py",
+    "language": "python",
+    "quality_score": {
+      "total": 70,
+      "documentation": 15,
+      "complexity": 15,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 15,
+          "max": 30,
+          "details": "10/28 items documented"
+        },
+        "complexity": {
+          "score": 15,
+          "max": 30,
+          "details": "71 decision points (AST)"
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": "0 long lines detected"
+        }
+      },
+      "grade": "B"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "nested_loops",
+        "severity": "MEDIUM",
+        "description": "Potential nested_loops performance issue",
+        "line": 296,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 123,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 188,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 190,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 300,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 321,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 395,
+        "suggestion": "Review algorithmic complexity"
+      }
+    ]
+  }
+]

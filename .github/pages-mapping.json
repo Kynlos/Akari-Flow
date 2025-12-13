@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-11-16T00:37:13.721893",
+  "last_updated": "2025-12-13T22:39:43.692040",
   "file_to_page": {
     "pages-manager.ts": [
       "api/pages-manager.md",
@@ -44,6 +44,11 @@
       "api/llm.md",
       "features/llm.md",
       "modules/llm.md"
+    ],
+    "code-analyzer.ts": [
+      "api/code-analyzer.md",
+      "features/code-analyzer.md",
+      "modules/code-analyzer.md"
     ]
   },
   "page_metadata": {
@@ -245,6 +250,30 @@
         "pages-manager.ts"
       ],
       "last_updated": "2025-11-16T00:35:50.556430",
+      "last_action": "create"
+    },
+    "api/code-analyzer.md": {
+      "created": "2025-12-13T22:39:43.690771",
+      "sources": [
+        "code-analyzer.ts"
+      ],
+      "last_updated": "2025-12-13T22:39:43.690777",
+      "last_action": "create"
+    },
+    "features/code-analyzer.md": {
+      "created": "2025-12-13T22:39:43.690874",
+      "sources": [
+        "code-analyzer.ts"
+      ],
+      "last_updated": "2025-12-13T22:39:43.690893",
+      "last_action": "create"
+    },
+    "modules/code-analyzer.md": {
+      "created": "2025-12-13T22:39:43.690987",
+      "sources": [
+        "code-analyzer.ts"
+      ],
+      "last_updated": "2025-12-13T22:39:43.690990",
       "last_action": "create"
     }
   },

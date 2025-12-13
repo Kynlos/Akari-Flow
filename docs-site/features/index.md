@@ -12,6 +12,7 @@ User-facing feature documentation and guides.
 
 - **[Auth System](auth-system.md)** - Feature guide and tutorial
 - **[Authentication](authentication.md)** - Feature guide and tutorial
+- **[Code Analyzer](code-analyzer.md)** - Feature guide and tutorial
 - **[Data Layer](data-layer.md)** - Feature guide and tutorial
 - **[Email Service](email-service.md)** - Feature guide and tutorial
 - **[Llm](llm.md)** - Feature guide and tutorial
@@ -19,7 +20,7 @@ User-facing feature documentation and guides.
 - **[Pages Manager](pages-manager.md)** - Feature guide and tutorial
 - **[Payment System](payment-system.md)** - Feature guide and tutorial
 
-**Total:** 8 features
+**Total:** 9 features
 
 ---
 
