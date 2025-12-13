@@ -26,6 +26,23 @@ A comprehensive GitHub Actions-based system that automatically generates documen
 
 ---
 
+## 💡 Why Intelligent CI/CD?
+
+**"Documentation is the code."** — *Everyone says it, but nobody actually searches the code.*
+
+In reality, documentation rots the moment it's written. Developers hate writing it, and teams struggle to maintain it. The cost? Slower onboarding, silent breaking changes, and critical knowledge locked in people's heads.
+
+**This system aims to eliminate documentation debt entirely.**
+
+By treating your CI pipeline as an **Autonomous Knowledge Engine**, this tool ensures that:
+1.  **Docs never drift**: If the code changes, the docs update. Instantly.
+2.  **Architecture is visible**: Hidden dependencies are visualized automatically.
+3.  **Safety is enforced**: Breaking changes are caught *before* they merge.
+
+It allows your team to focus on **building features**, while the Agent handles the **explanation**.
+
+---
+
 ## 🎯 Overview
 
 This system revolutionizes code documentation by automatically:
