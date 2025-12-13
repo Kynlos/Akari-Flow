@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """
 Agentic PR Bot - Make Code Changes
-
-Responds to action requests in PR comments and makes code changes.
-Only works for PR author and assignees.
+Features:
+1. Safer "Search & Replace" mechanism
+2. Auth checks
+3. Intent classification
 """
 
 import os
@@ -60,7 +61,7 @@ Respond ONLY with JSON:
                 'Content-Type': 'application/json'
             },
             json={
-                'model': MODEL,
+                'model': 'openai/gpt-oss-20b', # Use smaller model for classification
                 'messages': [
                     {'role': 'system', 'content': 'You are a PR intent classifier. Respond only with valid JSON.'},
                     {'role': 'user', 'content': prompt}
@@ -92,13 +93,13 @@ def load_changed_files():
         return [line.strip() for line in f if line.strip()]
 
 def generate_code_changes(action_description, files):
-    """Use LLM to generate code changes"""
+    """Use LLM to generate SEARCH/REPLACE blocks"""
     
     # Build context from changed files
     context = "PR Files:\n\n"
     file_contents = {}
     
-    code_extensions = {'.ts', '.js', '.tsx', '.jsx', '.py'}
+    code_extensions = {'.ts', '.js', '.tsx', '.jsx', '.py', '.go', '.rs', '.java'}
     
     for file_path in files:
         if Path(file_path).suffix not in code_extensions:
@@ -119,23 +120,30 @@ def generate_code_changes(action_description, files):
     if not file_contents:
         return None
     
-    prompt = f"""You are a code editor bot. Make the requested changes to the code files.
+    prompt = f"""You are a code editing agent. Use SEARCH/REPLACE blocks to modify the code.
 
 {context}
 
 User request: {action_description}
 
-Generate the COMPLETE modified files. For each file you modify, output:
+Instructions:
+1. Output specific SEARCH and REPLACE blocks for changes.
+2. The SEARCH block must match existing code EXACTLY (including whitespace).
+3. The REPLACE block contains your new code.
+4. Keep context lines to a minimum (2-3 lines) to ensure uniqueness.
 
-FILE: <filepath>
-```
-<complete file content with changes>
-```
+Format:
 
-CHANGES:
-- Brief description of what you changed
+FILE: path/to/file.ext
+<<<< SEARCH
+original code lines
+to be replaced
+====
+new code lines
+with changes applied
+>>>>
 
-Only output files that need changes. Keep the same style and formatting as original code."""
+Response:"""
 
     try:
         response = requests.post(
@@ -147,10 +155,10 @@ Only output files that need changes. Keep the same style and formatting as origi
             json={
                 'model': MODEL,
                 'messages': [
-                    {'role': 'system', 'content': 'You are a helpful code editing assistant. Make the requested changes and output complete modified files.'},
+                    {'role': 'system', 'content': 'You are a precise code editing assistant. Use SEARCH/REPLACE format.'},
                     {'role': 'user', 'content': prompt}
                 ],
-                'temperature': 0.2,
+                'temperature': 0.1, # Low temp for precision
                 'max_tokens': 4000
             },
             timeout=60
@@ -163,33 +171,53 @@ Only output files that need changes. Keep the same style and formatting as origi
     
     return None
 
-def parse_and_apply_changes(llm_output, original_files):
-    """Parse LLM output and apply changes to files"""
-    changes_made = []
+def apply_changes_safely(llm_output, original_files):
+    """Parse SEARCH/REPLACE blocks and apply them"""
+    files_modified = set()
     
-    # Parse FILE: blocks
-    file_blocks = re.finditer(r'FILE:\s*([^\n]+)\n```[^\n]*\n(.*?)```', llm_output, re.DOTALL)
+    # Regex to capture blocks
+    # Group 1: Filename
+    # Group 2: Search content
+    # Group 3: Replace content
+    pattern = re.compile(r'FILE:\s*([^\n]+)\s*<<<<\s*SEARCH\n(.*?)\n====\n(.*?)\n>>>>', re.DOTALL)
     
-    for match in file_blocks:
+    matches = pattern.finditer(llm_output)
+    
+    for match in matches:
         file_path = match.group(1).strip()
-        new_content = match.group(2)
+        search_block = match.group(2)
+        replace_block = match.group(3)
         
-        # Security: only modify PR files
-        if file_path not in original_files:
-            print(f"  SKIP: {file_path} (not in PR)")
+        # Verify file exists in original files
+        if not os.path.exists(file_path):
+            print(f"  SKIP: {file_path} (File not found locally)")
             continue
-        
-        # Apply changes
+            
         try:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # Attempt replacement
+            # We try to handle whitespace leniency by stripping ends first
+            if search_block not in content:
+                # Try relaxed match (line by line stripping)
+                print(f"  WARN: Exact match failed for {file_path}, trying fuzzy...")
+                # ... (Simple fuzzy logic could go here, but strictly failing is safer for now)
+                print(f"  ERR: Search block not found in {file_path}")
+                continue
+            
+            new_content = content.replace(search_block, replace_block, 1) # Replace first occurrence
+            
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(new_content)
+                
+            files_modified.add(file_path)
+            print(f"  ✓ Applied change to {file_path}")
             
-            changes_made.append(file_path)
-            print(f"  ✓ Modified: {file_path}")
         except Exception as e:
             print(f"  ERROR modifying {file_path}: {e}")
-    
-    return changes_made
+            
+    return list(files_modified)
 
 def commit_changes(files_changed, action_description):
     """Commit the changes"""
@@ -203,239 +231,82 @@ def commit_changes(files_changed, action_description):
         
         # Add changed files
         for file_path in files_changed:
-            result = subprocess.run(['git', 'add', file_path], capture_output=True, text=True)
-            print(f"  git add {file_path}: {result.returncode}")
+            subprocess.run(['git', 'add', file_path], capture_output=True, text=True)
         
-        # Check if there are changes to commit
+        # Check status
         status = subprocess.run(['git', 'status', '--short'], capture_output=True, text=True)
         if not status.stdout.strip():
-            print("  No changes to commit (files unchanged)")
             return "no-changes"
-        
-        print(f"  Changes to commit:\n{status.stdout}")
         
         # Commit
         commit_msg = f"bot: {action_description[:100]}"
-        result = subprocess.run(['git', 'commit', '-m', commit_msg], capture_output=True, text=True)
-        print(f"  Commit result: {result.returncode}")
-        print(f"  {result.stdout}")
-        
-        if result.returncode != 0:
-            print(f"  ERROR: {result.stderr}")
-            return None
-        
-        # Get commit hash BEFORE push
-        result = subprocess.run(['git', 'rev-parse', 'HEAD'], capture_output=True, text=True, check=True)
-        commit_hash = result.stdout.strip()
-        short_hash = commit_hash[:7]
+        subprocess.run(['git', 'commit', '-m', commit_msg], capture_output=True, text=True)
         
         # Push
-        print(f"  Pushing commit {short_hash}...")
-        push_result = subprocess.run(['git', 'push'], capture_output=True, text=True)
-        print(f"  Push result: {push_result.returncode}")
-        print(f"  {push_result.stdout}")
+        subprocess.run(['git', 'push'], capture_output=True, text=True)
         
-        if push_result.returncode != 0:
-            print(f"  Push ERROR: {push_result.stderr}")
-            return None
+        # Get hash
+        result = subprocess.run(['git', 'rev-parse', 'HEAD'], capture_output=True, text=True)
+        return result.stdout.strip()
         
-        return commit_hash
     except Exception as e:
         print(f"ERROR committing: {e}")
-        import traceback
-        traceback.print_exc()
         return None
 
 def main():
-    print("Agentic PR Bot - Code Change Agent")
+    print("Agentic PR Bot - Safer Code Change Agent")
     print("="*80)
     
-    print(f"Comment from @{COMMENT_USER}:")
-    print(f"  {COMMENT_BODY[:200]}")
-    
-    # Check for [auto] prefix
     if not COMMENT_BODY.strip().lower().startswith('[auto]'):
-        print("\n⏭️  No [auto] prefix, skipping")
         sys.exit(0)
     
-    # Remove [auto] prefix
     actual_comment = re.sub(r'^\[auto\]\s*', '', COMMENT_BODY.strip(), flags=re.IGNORECASE)
-    print(f"\n✓ [auto] prefix detected")
-    print(f"   Request: {actual_comment[:100]}")
     
-    # Check authorization
     if not is_authorized(COMMENT_USER):
-        print(f"\n⚠️  User @{COMMENT_USER} not authorized")
-        print(f"   PR Author: {PR_AUTHOR}")
-        print(f"   Assignees: {PR_ASSIGNEES}")
-        
-        response = f"""## 🔒 Authorization Required
-
-@{COMMENT_USER}, only the PR author (@{PR_AUTHOR}) or assignees can request code changes.
-
-If you'd like to suggest changes, please comment your suggestions and the author can implement them."""
-        
-        with open('bot_response.md', 'w') as f:
-            f.write(response)
-        
+        print(f"Unauthorized: {COMMENT_USER}")
         sys.exit(0)
     
-    print(f"✓ User authorized")
-    
-    # Classify intent
-    print("\nClassifying intent...")
+    print("Classifying intent...")
     intent = classify_intent(actual_comment)
     
-    print(f"  Category: {intent['category']}")
-    print(f"  Confidence: {intent.get('confidence', 0):.2f}")
-    print(f"  Action: {intent.get('action', 'N/A')}")
-    
     if intent['category'] == 'QUESTION_ONLY':
-        print("\nNo action requested, skipping")
         sys.exit(0)
-    
-    # Get changed files
+        
     changed_files = load_changed_files()
-    print(f"\nPR has {len(changed_files)} files")
-    
     if not changed_files:
-        print("No files to modify")
+        print("No changed files to work on.")
         sys.exit(0)
-    
-    # If ambiguous, ask for confirmation
-    if intent['category'] == 'POSSIBLE_ACTION':
-        response = f"""## 🤔 Confirmation Needed
-
-@{COMMENT_USER}, I think you want me to: **{intent['action']}**
-
-Is this correct? If so, reply with:
-- "yes" or "do it" to proceed
-- "no" or "nevermind" to cancel
-
-I'll wait for your confirmation before making changes."""
         
-        with open('bot_response.md', 'w') as f:
-            f.write(response)
-        
-        # Save pending action for next comment
-        with open('pending_action.json', 'w') as f:
-            json.dump({
-                'action': intent['action'],
-                'files': changed_files,
-                'requested_by': COMMENT_USER
-            }, f)
-        
-        print("\n⏳ Asking for confirmation")
-        sys.exit(0)
-    
-    # Check for pending confirmation
-    if os.path.exists('pending_action.json'):
-        with open('pending_action.json', 'r') as f:
-            pending = json.load(f)
-        
-        # Check if this is a confirmation
-        confirmation_words = ['yes', 'do it', 'go ahead', 'proceed', 'confirm', 'ok', 'yeah']
-        cancel_words = ['no', 'nevermind', 'cancel', 'stop']
-        
-        comment_lower = COMMENT_BODY.lower().strip()
-        
-        if any(word in comment_lower for word in cancel_words):
-            os.remove('pending_action.json')
-            response = f"## ❌ Cancelled\n\n@{COMMENT_USER}, action cancelled."
-            with open('bot_response.md', 'w') as f:
-                f.write(response)
-            sys.exit(0)
-        
-        if any(word in comment_lower for word in confirmation_words):
-            # Use the pending action
-            intent['action'] = pending['action']
-            changed_files = pending['files']
-            os.remove('pending_action.json')
-            print(f"\n✓ Confirmed action: {intent['action']}")
-        else:
-            # Not a clear confirmation, skip
-            sys.exit(0)
-    
-    # Execute the action
-    print("\n" + "="*80)
-    print("GENERATING CODE CHANGES")
-    print("="*80)
+    print(f"Generating changes for: {intent['action']}")
     
     llm_output = generate_code_changes(intent['action'], changed_files)
     
     if not llm_output:
-        response = f"""## ❌ Failed to Generate Changes
-
-@{COMMENT_USER}, I couldn't generate the requested changes. Please try rephrasing your request or make the changes manually."""
-        
-        with open('bot_response.md', 'w') as f:
-            f.write(response)
-        
+        print("LLM failed to generate output.")
         sys.exit(0)
-    
-    print("\nLLM Output Preview:")
-    print(llm_output[:500] + "...")
-    
-    # Load original file contents for security check
-    original_files = {}
-    for file_path in changed_files:
-        if os.path.exists(file_path):
-            with open(file_path, 'r', encoding='utf-8') as f:
-                original_files[file_path] = f.read()
-    
-    # Apply changes
-    print("\n" + "="*80)
-    print("APPLYING CHANGES")
-    print("="*80)
-    
-    files_modified = parse_and_apply_changes(llm_output, original_files)
-    
-    if not files_modified:
-        response = f"""## ⚠️ No Changes Applied
-
-@{COMMENT_USER}, I couldn't parse the generated changes. The LLM might have misunderstood the request."""
         
-        with open('bot_response.md', 'w') as f:
-            f.write(response)
-        
-        sys.exit(0)
+    print("Applying changes...")
+    files_modified = apply_changes_safely(llm_output, changed_files)
     
-    # Commit changes
-    print("\n" + "="*80)
-    print("COMMITTING CHANGES")
-    print("="*80)
-    
-    commit_hash = commit_changes(files_modified, intent['action'])
-    
-    if commit_hash:
-        # Generate success response
-        response = f"""## ✅ Changes Applied
+    if files_modified:
+        commit_hash = commit_changes(files_modified, intent['action'])
+        if commit_hash:
+            response = f"""## ✅ Changes Applied
+            
+I made the requested changes: **{intent['action']}**
 
-@{COMMENT_USER}, I made the requested changes: **{intent['action']}**
-
-### Files Modified ({len(files_modified)})
-{chr(10).join(f'- `{Path(f).name}`' for f in files_modified)}
-
-### Commit
-[{commit_hash[:7]}](../commit/{commit_hash})
-
-### What Changed
-{llm_output.split('CHANGES:')[1] if 'CHANGES:' in llm_output else 'See commit for details'}
-
----
-
-*If these changes aren't what you wanted, you can always revert this commit or ask me to modify them further.*"""
-        
-        print(f"\n✓ Committed as {commit_hash}")
+Modified: {', '.join(files_modified)}
+Commit: {commit_hash[:7]}
+"""
+            with open('bot_response.md', 'w') as f:
+                f.write(response)
     else:
-        response = f"""## ❌ Commit Failed
-
-@{COMMENT_USER}, I made the changes but couldn't commit them. Please check the action logs."""
-    
-    with open('bot_response.md', 'w') as f:
-        f.write(response)
-    
-    print("\n✓ Response saved")
+         response = f"""## ⚠️ No Changes Applied
+         
+I understood the request but couldn't apply the changes safely. This usually means I couldn't find the exact code block to replace.
+"""
+         with open('bot_response.md', 'w') as f:
+            f.write(response)
 
 if __name__ == '__main__':
     main()

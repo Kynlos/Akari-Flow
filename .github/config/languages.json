@@ -1,0 +1,84 @@
+{
+  "languages": {
+    "python": {
+      "extensions": [".py"],
+      "type": "ast",
+      "pylint_id": "python",
+      "complexity_keywords": ["if", "elif", "else", "for", "while", "try", "except", "with"]
+    },
+    "javascript": {
+      "extensions": [".js", ".jsx"],
+      "type": "regex",
+      "function_pattern": "(?:function\\s+(\\w+)|(?:const|let|var)\\s+(\\w+)\\s*=\\s*(?:async\\s*)?\\()",
+      "class_pattern": "class\\s+(\\w+)",
+      "complexity_keywords": ["if", "else", "for", "while", "switch", "catch", "case"]
+    },
+    "typescript": {
+      "extensions": [".ts", ".tsx"],
+      "type": "regex",
+      "function_pattern": "(?:function\\s+(\\w+)|(?:const|let|var)\\s+(\\w+)\\s*=\\s*(?:async\\s*)?\\()",
+      "class_pattern": "class\\s+(\\w+)",
+      "complexity_keywords": ["if", "else", "for", "while", "switch", "catch", "case"]
+    },
+    "go": {
+      "extensions": [".go"],
+      "type": "regex",
+      "function_pattern": "func\\s+(\\w+)\\s*\\(",
+      "struct_pattern": "type\\s+(\\w+)\\s+struct",
+      "complexity_keywords": ["if", "else", "for", "switch", "case", "select"]
+    },
+    "rust": {
+      "extensions": [".rs"],
+      "type": "regex",
+      "function_pattern": "fn\\s+(\\w+)\\s*\\(",
+      "struct_pattern": "struct\\s+(\\w+)",
+      "complexity_keywords": ["if", "else", "for", "while", "match", "loop"]
+    },
+    "java": {
+      "extensions": [".java"],
+      "type": "regex",
+      "function_pattern": "(?:public|private|protected)?\\s*(?:static\\s+)?(?:\\w+\\s+)?(\\w+)\\s*\\(",
+      "class_pattern": "(?:public\\s+)?class\\s+(\\w+)",
+      "complexity_keywords": ["if", "else", "for", "while", "switch", "catch", "case"]
+    },
+    "cpp": {
+      "extensions": [".cpp", ".cc", ".c", ".h", ".hpp"],
+      "type": "regex",
+      "function_pattern": "(?:\\w+\\s+)?(\\w+)\\s*\\([^)]*\\)\\s*{",
+      "class_pattern": "class\\s+(\\w+)",
+      "complexity_keywords": ["if", "else", "for", "while", "switch", "catch", "case"]
+    }
+  },
+  "security_patterns": {
+    "hardcoded_secret": [
+      ["password\\s*=\\s*[\"'](?!{{)[^\"']{8,}[\"']", "Hardcoded password detected"],
+      ["api[_-]?key\\s*=\\s*[\"'][^\"']{20,}[\"']", "Hardcoded API key detected"],
+      ["secret\\s*=\\s*[\"'][^\"']{16,}[\"']", "Hardcoded secret detected"],
+      ["token\\s*=\\s*[\"'][^\"']{20,}[\"']", "Hardcoded token detected"]
+    ],
+    "sql_injection": [
+      ["execute\\s*\\(\\s*[\"'].*\\+.*[\"']", "Possible SQL injection (string concatenation)"],
+      ["query\\s*\\(\\s*f[\"'].*{.*}.*[\"']", "Possible SQL injection (f-string formatting)"],
+      ["SELECT.*\\+\\s*\\w+", "Possible SQL injection in query"]
+    ],
+    "xss": [
+      ["innerHTML\\s*=\\s*\\w+", "Possible XSS via innerHTML"],
+      ["dangerouslySetInnerHTML", "Dangerous HTML injection"],
+      ["eval\\s*\\(", "Dangerous use of eval()"]
+    ],
+    "path_traversal": [
+      ["open\\s*\\([^)]*\\+.*\\)", "Possible path traversal in file operations"],
+      ["File\\s*\\([^)]*\\+.*\\)", "Possible path traversal in file creation"]
+    ],
+    "command_injection": [
+      ["exec\\s*\\(", "Dangerous use of exec()"],
+      ["os\\.system\\s*\\(", "Dangerous use of os.system()"],
+      ["subprocess\\..*shell\\s*=\\s*True", "Dangerous shell=True in subprocess"]
+    ]
+  },
+  "performance_patterns": {
+    "nested_loops": "for\\s+.*:\\s*\\n\\s*for\\s+",
+    "n_squared": "for\\s+\\w+\\s+in\\s+(\\w+):.*for\\s+\\w+\\s+in\\s+\\1",
+    "repeated_computation": "for\\s+.*:\\s*\\n.*\\.(\\w+)\\("
+  }
+}

@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.ipynb_checkpoints
+.DS_Store
+
+# CI/CD Temp Files
+changed_files.txt
+pr_files.txt
+bot_response.md
+doc_output.md
+breaking_changes.txt
+temp_test.py
+complexity.py
+.github/doc_cache.json
+code-analysis/

@@ -1,0 +1,91 @@
+{
+  "files": {
+    "c:\\CICD\\payment-processor.ts": {
+      "path": "c:\\CICD\\payment-processor.ts",
+      "language": "typescript",
+      "size": 2592,
+      "lastModified": 1763163718280.7966
+    },
+    "c:\\CICD\\database.ts": {
+      "path": "c:\\CICD\\database.ts",
+      "language": "typescript",
+      "size": 810,
+      "lastModified": 1763154074169.078
+    },
+    "c:\\CICD\\email-service.ts": {
+      "path": "c:\\CICD\\email-service.ts",
+      "language": "typescript",
+      "size": 2237,
+      "lastModified": 1763163875187.7952
+    },
+    "c:\\CICD\\auth.ts": {
+      "path": "c:\\CICD\\auth.ts",
+      "language": "typescript",
+      "size": 985,
+      "lastModified": 1763158416868.1086
+    },
+    "c:\\CICD\\.github\\scripts\\agentic-bot.py": {
+      "path": "c:\\CICD\\.github\\scripts\\agentic-bot.py",
+      "language": "python",
+      "size": 14691,
+      "lastModified": 1763159129065.2605
+    },
+    "c:\\CICD\\.github\\scripts\\answer-question.py": {
+      "path": "c:\\CICD\\.github\\scripts\\answer-question.py",
+      "language": "python",
+      "size": 5233,
+      "lastModified": 1763157926099.3853
+    },
+    "c:\\CICD\\.github\\scripts\\wiki-manager.py": {
+      "path": "c:\\CICD\\.github\\scripts\\wiki-manager.py",
+      "language": "python",
+      "size": 19886,
+      "lastModified": 1763247783722.951
+    },
+    "c:\\CICD\\.github\\scripts\\send-notifications.py": {
+      "path": "c:\\CICD\\.github\\scripts\\send-notifications.py",
+      "language": "python",
+      "size": 22289,
+      "lastModified": 1763242340957.8447
+    },
+    "c:\\CICD\\.github\\scripts\\pr-bump-notify.py": {
+      "path": "c:\\CICD\\.github\\scripts\\pr-bump-notify.py",
+      "language": "python",
+      "size": 7747,
+      "lastModified": 1763232431852.5674
+    },
+    "c:\\CICD\\.github\\scripts\\pages-manager.py": {
+      "path": "c:\\CICD\\.github\\scripts\\pages-manager.py",
+      "language": "python",
+      "size": 26382,
+      "lastModified": 1763253621160.2568
+    },
+    "c:\\CICD\\.github\\scripts\\llm.py": {
+      "path": "c:\\CICD\\.github\\scripts\\llm.py",
+      "language": "python",
+      "size": 9876,
+      "lastModified": 1763252357706.6804
+    },
+    "c:\\CICD\\.github\\scripts\\generate-docs.py": {
+      "path": "c:\\CICD\\.github\\scripts\\generate-docs.py",
+      "language": "python",
+      "size": 19233,
+      "lastModified": 1763241312415.8833
+    },
+    "c:\\CICD\\.github\\scripts\\code-analyzer.py": {
+      "path": "c:\\CICD\\.github\\scripts\\code-analyzer.py",
+      "language": "python",
+      "size": 22310,
+      "lastModified": 1763241932460.7146
+    }
+  },
+  "repos": {
+    "cicd": {
+      "repoId": "cicd",
+      "name": "CICD",
+      "rootPath": "c:\\CICD",
+      "branch": "main"
+    }
+  },
+  "timestamp": 1763329702534
+}
