@@ -17,6 +17,8 @@ on:
       - '**.c'
       - '**.h'
       - '**.hpp'
+      - '.github/**'
+      - 'config/**'
   pull_request:
     paths:
       - '**.ts'
