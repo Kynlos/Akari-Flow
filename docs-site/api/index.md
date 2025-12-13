@@ -22,10 +22,11 @@ Low-level API documentation for all functions, classes, and interfaces.
 - **[Pages Manager](pages-manager.md)** - Technical API documentation
 - **[Payment Processor](payment-processor.md)** - Technical API documentation
 - **[Payments](payments.md)** - Technical API documentation
+- **[Send Notifications](send-notifications.md)** - Technical API documentation
 - **[Site Generator](site-generator.md)** - Technical API documentation
 - **[Test Diagram Generator](test-diagram-generator.md)** - Technical API documentation
 
-**Total:** 14 API pages
+**Total:** 15 API pages
 
 ---
 

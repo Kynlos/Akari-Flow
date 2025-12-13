@@ -1,3 +1,8 @@
+---
+title: Send Notifications
+layout: default
+---
+
 # send-notifications.py
 
 *Auto-generated from `.github/scripts/send-notifications.py`*

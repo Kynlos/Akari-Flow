@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-12-13T22:47:03.090881",
+  "last_updated": "2025-12-13T22:56:30.117783",
   "file_to_page": {
     "pages-manager.ts": [
       "api/pages-manager.md",
@@ -70,6 +70,11 @@
     "test_diagram_generator.ts": [
       "api/test-diagram-generator.md",
       "modules/test-diagram-generator.md"
+    ],
+    "send-notifications.ts": [
+      "api/send-notifications.md",
+      "features/notification-system.md",
+      "modules/notification-system.md"
     ]
   },
   "page_metadata": {
@@ -236,18 +241,20 @@
     "features/notification-system.md": {
       "created": "2025-11-16T00:20:05.538414",
       "sources": [
-        "email-service.ts"
+        "email-service.ts",
+        "send-notifications.ts"
       ],
-      "last_updated": "2025-11-16T00:20:05.538420",
-      "last_action": "create"
+      "last_updated": "2025-12-13T22:56:30.116356",
+      "last_action": "append"
     },
     "modules/notification-system.md": {
       "created": "2025-11-16T00:20:05.538527",
       "sources": [
-        "email-service.ts"
+        "email-service.ts",
+        "send-notifications.ts"
       ],
-      "last_updated": "2025-11-16T00:20:05.538532",
-      "last_action": "create"
+      "last_updated": "2025-12-13T22:56:30.116564",
+      "last_action": "append"
     },
     "features/pages-manager.md": {
       "created": "2025-11-16T00:21:39.249453",
@@ -383,6 +390,14 @@
         "test_diagram_generator.ts"
       ],
       "last_updated": "2025-12-13T22:47:03.089587",
+      "last_action": "create"
+    },
+    "api/send-notifications.md": {
+      "created": "2025-12-13T22:56:30.114863",
+      "sources": [
+        "send-notifications.ts"
+      ],
+      "last_updated": "2025-12-13T22:56:30.116022",
       "last_action": "create"
     }
   },

@@ -1,0 +1,32 @@
+[
+  {
+    "file": ".github/scripts/send-notifications.py",
+    "language": "python",
+    "quality_score": {
+      "total": 85,
+      "documentation": 30,
+      "complexity": 20,
+      "maintainability": 35,
+      "breakdown": {
+        "documentation": {
+          "score": 30,
+          "max": 30,
+          "details": "13/16 items documented"
+        },
+        "complexity": {
+          "score": 20,
+          "max": 30,
+          "details": "80 decision points (AST)"
+        },
+        "maintainability": {
+          "score": 35,
+          "max": 40,
+          "details": "1 long lines detected"
+        }
+      },
+      "grade": "A"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  }
+]
