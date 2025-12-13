@@ -32,15 +32,15 @@ class NotificationService:
         self.run_url = f"https://github.com/{self.repo}/actions/runs/{os.environ.get('GITHUB_RUN_ID', '')}"
     
     def _clean_commit_message(self, message: str) -> str:
-        """Remove Amp and other metadata from commit message"""
+        """Remove Kynlo Akari and other metadata from commit message"""
         lines = message.split('\n')
         cleaned_lines = []
         
         for line in lines:
-            # Skip Amp-specific lines
-            if line.startswith('Amp-Thread-ID:'):
+            # Skip Kynlo-specific lines
+            if line.startswith('Kynlo-Thread-ID:'):
                 continue
-            if line.startswith('Co-authored-by: Amp'):
+            if line.startswith('Co-authored-by: Kynlo Akari'):
                 continue
             # Add other lines
             cleaned_lines.append(line)

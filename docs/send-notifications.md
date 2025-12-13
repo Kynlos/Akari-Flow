@@ -4,7 +4,7 @@
 
 # `send-notifications.py` – API Documentation
 
-> **Author**: Amp Team  
+> **Author**: Kynlo Akari  
 > **Version**: 1.0.0  
 > **Last updated**: 2025‑11‑15  
 
@@ -80,7 +80,7 @@ service.send_discord(
 | Method | Parameters | Return Value | Description |
 |--------|------------|--------------|-------------|
 | `__init__(self)` | – | `None` | Initializes the service by reading environment variables: `GITHUB_REPOSITORY`, `GITHUB_SHA`, `COMMIT_MESSAGE`, `GITHUB_ACTOR`, `GITHUB_RUN_ID`. |
-| `_clean_commit_message(self, message: str) -> str` | `message` – raw commit message | `str` – cleaned message | Removes Amp‑specific metadata lines (`Amp-Thread-ID`, `Co‑authored‑by: Amp`). |
+| `_clean_commit_message(self, message: str) -> str` | `message` – raw commit message | `str` – cleaned message | Removes Kynlo‑specific metadata lines (`Kynlo-Thread-ID`, `Co‑authored‑by: Kynlo Akari`). |
 | `truncate(self, text: str, limit: int) -> str` | `text`, `limit` | `str` – truncated text | Truncates `text` to `limit` characters, appending `…` if truncated. |
 | `_get_commit_emoji(self, breaking_changes: List[Dict]) -> str` | `breaking_changes` – list of breaking‑change dicts | `str` – emoji | Chooses an emoji based on commit type or presence of breaking changes. |
 | `_build_discord_embed_base(self, emoji: str) -> Dict` | `emoji` – emoji string | `dict` – Discord embed base | Builds the base embed (title, description, color, timestamp, footer). |
