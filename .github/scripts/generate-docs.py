@@ -430,6 +430,19 @@ def main():
         
         diff_context += f"```typescript\n{content}\n```\n\n"
         
+        # Generate Diagram
+        try:
+             # We import here to avoid circular dependencies or path issues at top level if not careful
+             sys.path.append(str(Path(__file__).parent))
+             from diagram_generator import DiagramGenerator
+             
+             diagram_gen = DiagramGenerator()
+             diagram_gen.parse_file(file_path, content)
+             diagram = diagram_gen.generate_class_diagram()
+        except Exception as e:
+            print(f"  Warning: Diagram generation failed: {e}")
+            diagram = ""
+
         # Generate
         doc_content = generate_documentation(diff_context, file_path)
         
@@ -444,6 +457,13 @@ def main():
                  f.write("## ⚠️ Breaking Changes\n\n")
                  for change in breaking_info['changes']:
                      f.write(f"- **{change['type'].upper()}**: {change['message']}\n")
+             
+             if diagram:
+                f.write("## 🏗️ Structure\n\n")
+                f.write("```mermaid\n")
+                f.write(diagram)
+                f.write("\n```\n\n")
+                
              f.write(doc_content)
              
         doc_files_created.append(str(doc_path))
