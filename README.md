@@ -197,4 +197,11 @@ The system now builds a static site in the `docs-site` directory.
 6. **Commit**: The Action commits all artifacts (`docs/`, `docs-site/`, `CHANGELOG.md`) back to the repo.
 
 ---
-*Built with ❤️ by the CI/CD Intelligence Team*
+## ❤️ Support the Project
+
+If you find this project useful, please consider sponsoring to support continuous development!
+
+[![Sponsor](https://img.shields.io/badge/Sponsor-Kynlos-pink?style=for-the-badge&logo=github-sponsors)](https://github.com/sponsors/Kynlos)
+
+---
+*Built with ❤️ by the Akari Flow Team*
