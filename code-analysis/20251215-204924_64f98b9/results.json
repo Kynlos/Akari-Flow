@@ -1,0 +1,64 @@
+[
+  {
+    "file": ".github/scripts/wiki-manager.py",
+    "language": "python",
+    "quality_score": {
+      "total": 85,
+      "documentation": 30,
+      "complexity": 15,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 30,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for class 'WikiManager' at line 29",
+              "Missing doc for function '__init__' at line 30"
+            ],
+            "count": 2
+          }
+        },
+        "complexity": {
+          "score": 15,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": [
+            "2 lines exceed 120 characters"
+          ]
+        }
+      },
+      "grade": "A"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 320,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 411,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 484,
+        "suggestion": "Review algorithmic complexity"
+      }
+    ]
+  }
+]

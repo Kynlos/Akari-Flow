@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-12-15T20:45:55.537043",
+  "last_updated": "2025-12-15T20:49:25.171380",
   "description": "Persistent mapping of source files to Wiki pages. DO NOT DELETE - used by wiki-manager.py to ensure consistency.",
   "file_to_page": {
     "email-service.ts": "Email-Service",
@@ -38,7 +38,8 @@
     "inspect_ts_module.py": "Inspect-Ts-Module",
     "test_doc_integration.py": "Testing-Guide",
     "test_dependency_mapper.ts": "Testing-Guide",
-    "test_polyglot.ts": "Testing-Guide"
+    "test_polyglot.ts": "Testing-Guide",
+    ".github/scripts/wiki-manager.py": "Wiki-Manager"
   },
   "page_metadata": {
     "Email-Service": {
@@ -80,9 +81,10 @@
     "Wiki-Manager": {
       "created": "2025-11-15T18:51:59.174762",
       "files": [
-        "wiki-manager.ts"
+        "wiki-manager.ts",
+        ".github/scripts/wiki-manager.py"
       ],
-      "last_updated": "2025-12-13T23:08:33.284853"
+      "last_updated": "2025-12-15T20:49:25.171372"
     },
     "Code-Analyzer": {
       "created": "2025-11-15T21:15:34.219798",
