@@ -12,20 +12,37 @@ User-facing feature documentation and guides.
 
 - **[Auth System](auth-system.md)** - Feature guide and tutorial
 - **[Authentication](authentication.md)** - Feature guide and tutorial
+- **[Auto Docs Generator](auto-docs-generator.md)** - Feature guide and tutorial
 - **[Cicd Cli](cicd-cli.md)** - Feature guide and tutorial
 - **[Code Analyzer](code-analyzer.md)** - Feature guide and tutorial
 - **[Data Layer](data-layer.md)** - Feature guide and tutorial
+- **[Debug Api Cursor](debug-api-cursor.md)** - Feature guide and tutorial
+- **[Debug Api](debug-api.md)** - Feature guide and tutorial
 - **[Debug Import](debug-import.md)** - Feature guide and tutorial
+- **[Debug Polyglot](debug-polyglot.md)** - Feature guide and tutorial
+- **[Debug Ts Query](debug-ts-query.md)** - Feature guide and tutorial
+- **[Debug Ts](debug-ts.md)** - Feature guide and tutorial
+- **[Debug_Import](debug_import.md)** - Feature guide and tutorial
+- **[Dependency Mapper](dependency-mapper.md)** - Feature guide and tutorial
 - **[Diagram Generator](diagram-generator.md)** - Feature guide and tutorial
+- **[Dump Ts Tree](dump-ts-tree.md)** - Feature guide and tutorial
 - **[Email Service](email-service.md)** - Feature guide and tutorial
+- **[Inspect Parser](inspect-parser.md)** - Feature guide and tutorial
+- **[Inspect Ts Binding](inspect-ts-binding.md)** - Feature guide and tutorial
+- **[Inspect Ts Module](inspect-ts-module.md)** - Feature guide and tutorial
 - **[Llm](llm.md)** - Feature guide and tutorial
 - **[Notification System](notification-system.md)** - Feature guide and tutorial
 - **[Pages Manager](pages-manager.md)** - Feature guide and tutorial
 - **[Payment System](payment-system.md)** - Feature guide and tutorial
+- **[Polyglot Analysis](polyglot-analysis.md)** - Feature guide and tutorial
+- **[Polyglot Analyzer Tests](polyglot-analyzer-tests.md)** - Feature guide and tutorial
+- **[Polyglot Analyzer](polyglot-analyzer.md)** - Feature guide and tutorial
 - **[Static Site Generator](static-site-generator.md)** - Feature guide and tutorial
+- **[Test Doc Integration](test-doc-integration.md)** - Feature guide and tutorial
+- **[Tree Sitter Query](tree-sitter-query.md)** - Feature guide and tutorial
 - **[Wiki Manager](wiki-manager.md)** - Feature guide and tutorial
 
-**Total:** 14 features
+**Total:** 31 features
 
 ---
 

@@ -1,3 +1,8 @@
+---
+title: Auto Docs Generator
+layout: default
+---
+
 # generate-docs.py
 
 *Auto-generated from `.github/scripts/generate-docs.py`*

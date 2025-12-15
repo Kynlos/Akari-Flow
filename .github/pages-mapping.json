@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-12-13T23:08:37.484924",
+  "last_updated": "2025-12-15T20:46:47.107578",
   "file_to_page": {
     "pages-manager.ts": [
       "api/pages-manager.md",
@@ -80,6 +80,79 @@
       "api/send-notifications.md",
       "features/notification-system.md",
       "modules/notification-system.md"
+    ],
+    "generate-docs.ts": [
+      "api/generate-docs.md",
+      "modules/generate-docs.md",
+      "features/auto-docs-generator.md"
+    ],
+    "__init__.ts": [
+      "modules/polyglot_analysis.md",
+      "features/polyglot-analysis.md"
+    ],
+    "dependency_mapper.ts": [
+      "api/dependency-mapper.md",
+      "modules/dependency-mapper.md",
+      "features/dependency-mapper.md"
+    ],
+    "polyglot_analyzer.ts": [
+      "api/polyglot-analyzer.md",
+      "features/polyglot-analyzer.md",
+      "modules/polyglot-analyzer.md"
+    ],
+    "check_imports.ts": [
+      "features/debug_import.md"
+    ],
+    "debug_api.ts": [
+      "features/debug-api.md",
+      "api/debug_api.md"
+    ],
+    "debug_api_cursor.ts": [
+      "features/debug-api-cursor.md"
+    ],
+    "debug_polyglot.ts": [
+      "features/debug-polyglot.md"
+    ],
+    "debug_ts.ts": [
+      "api/debug_ts.md",
+      "features/debug-ts.md"
+    ],
+    "debug_ts_query.ts": [
+      "features/debug-ts-query.md"
+    ],
+    "dump_go_tree.ts": [
+      "api/dump_go_tree.md",
+      "features/polyglot-analyzer.md"
+    ],
+    "dump_ts_tree.ts": [
+      "features/dump-ts-tree.md"
+    ],
+    "inspect_parser.ts": [
+      "features/inspect-parser.md"
+    ],
+    "inspect_query.ts": [
+      "features/tree-sitter-query.md",
+      "modules/inspect-query.md"
+    ],
+    "inspect_ts_binding.ts": [
+      "api/inspect-ts-binding.md",
+      "features/inspect-ts-binding.md"
+    ],
+    "inspect_ts_module.ts": [
+      "features/inspect-ts-module.md",
+      "modules/inspect_ts_module.md"
+    ],
+    "test_doc_integration.ts": [
+      "features/test-doc-integration.md",
+      "modules/test-doc-integration.md"
+    ],
+    "test_dependency_mapper.ts": [
+      "api/test_dependency_mapper.md"
+    ],
+    "test_polyglot.ts": [
+      "api/test_polyglot.md",
+      "modules/test-polyglot.md",
+      "features/polyglot-analyzer-tests.md"
     ]
   },
   "page_metadata": {
@@ -290,7 +363,7 @@
       "sources": [
         "code-analyzer.ts"
       ],
-      "last_updated": "2025-12-13T22:39:43.690777",
+      "last_updated": "2025-12-15T20:45:58.587088",
       "last_action": "create"
     },
     "features/code-analyzer.md": {
@@ -298,7 +371,7 @@
       "sources": [
         "code-analyzer.ts"
       ],
-      "last_updated": "2025-12-13T22:39:43.690893",
+      "last_updated": "2025-12-15T20:45:58.587411",
       "last_action": "create"
     },
     "modules/code-analyzer.md": {
@@ -306,7 +379,7 @@
       "sources": [
         "code-analyzer.ts"
       ],
-      "last_updated": "2025-12-13T22:39:43.690990",
+      "last_updated": "2025-12-15T20:45:58.587246",
       "last_action": "create"
     },
     "api/diagram-generator.md": {
@@ -427,6 +500,279 @@
         "wiki-manager.ts"
       ],
       "last_updated": "2025-12-13T23:08:37.483592",
+      "last_action": "create"
+    },
+    "api/generate-docs.md": {
+      "created": "2025-12-15T20:46:01.894195",
+      "sources": [
+        "generate-docs.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:01.894203",
+      "last_action": "create"
+    },
+    "modules/generate-docs.md": {
+      "created": "2025-12-15T20:46:01.894320",
+      "sources": [
+        "generate-docs.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:01.894324",
+      "last_action": "create"
+    },
+    "features/auto-docs-generator.md": {
+      "created": "2025-12-15T20:46:01.894430",
+      "sources": [
+        "generate-docs.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:01.894433",
+      "last_action": "create"
+    },
+    "modules/polyglot_analysis.md": {
+      "created": "2025-12-15T20:46:04.017823",
+      "sources": [
+        "__init__.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:04.017829",
+      "last_action": "create"
+    },
+    "features/polyglot-analysis.md": {
+      "created": "2025-12-15T20:46:04.017917",
+      "sources": [
+        "__init__.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:04.017921",
+      "last_action": "create"
+    },
+    "api/dependency-mapper.md": {
+      "created": "2025-12-15T20:46:08.502695",
+      "sources": [
+        "dependency_mapper.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:08.502704",
+      "last_action": "create"
+    },
+    "modules/dependency-mapper.md": {
+      "created": "2025-12-15T20:46:08.502801",
+      "sources": [
+        "dependency_mapper.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:08.502804",
+      "last_action": "create"
+    },
+    "features/dependency-mapper.md": {
+      "created": "2025-12-15T20:46:08.502889",
+      "sources": [
+        "dependency_mapper.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:08.502892",
+      "last_action": "create"
+    },
+    "api/polyglot-analyzer.md": {
+      "created": "2025-12-15T20:46:11.426605",
+      "sources": [
+        "polyglot_analyzer.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:11.426612",
+      "last_action": "create"
+    },
+    "features/polyglot-analyzer.md": {
+      "created": "2025-12-15T20:46:11.426709",
+      "sources": [
+        "polyglot_analyzer.ts",
+        "dump_go_tree.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:24.784476",
+      "last_action": "create"
+    },
+    "modules/polyglot-analyzer.md": {
+      "created": "2025-12-15T20:46:11.427223",
+      "sources": [
+        "polyglot_analyzer.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:11.427228",
+      "last_action": "create"
+    },
+    "features/debug_import.md": {
+      "created": "2025-12-15T20:46:13.033218",
+      "sources": [
+        "check_imports.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:13.033226",
+      "last_action": "append"
+    },
+    "features/debug-api.md": {
+      "created": "2025-12-15T20:46:15.224159",
+      "sources": [
+        "debug_api.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:15.224168",
+      "last_action": "create"
+    },
+    "api/debug_api.md": {
+      "created": "2025-12-15T20:46:15.224274",
+      "sources": [
+        "debug_api.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:15.224278",
+      "last_action": "create"
+    },
+    "features/debug-api-cursor.md": {
+      "created": "2025-12-15T20:46:16.924936",
+      "sources": [
+        "debug_api_cursor.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:16.924943",
+      "last_action": "create"
+    },
+    "features/debug-polyglot.md": {
+      "created": "2025-12-15T20:46:18.711719",
+      "sources": [
+        "debug_polyglot.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:18.711725",
+      "last_action": "create"
+    },
+    "api/debug_ts.md": {
+      "created": "2025-12-15T20:46:20.720900",
+      "sources": [
+        "debug_ts.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:20.720908",
+      "last_action": "create"
+    },
+    "features/debug-ts.md": {
+      "created": "2025-12-15T20:46:20.720995",
+      "sources": [
+        "debug_ts.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:20.720998",
+      "last_action": "create"
+    },
+    "features/debug-ts-query.md": {
+      "created": "2025-12-15T20:46:22.401373",
+      "sources": [
+        "debug_ts_query.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:22.401380",
+      "last_action": "create"
+    },
+    "api/dump_go_tree.md": {
+      "created": "2025-12-15T20:46:24.784318",
+      "sources": [
+        "dump_go_tree.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:24.784326",
+      "last_action": "create"
+    },
+    "features/dump-ts-tree.md": {
+      "created": "2025-12-15T20:46:27.877180",
+      "sources": [
+        "dump_ts_tree.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:27.877187",
+      "last_action": "create"
+    },
+    "features/inspect-parser.md": {
+      "created": "2025-12-15T20:46:29.722565",
+      "sources": [
+        "inspect_parser.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:29.722573",
+      "last_action": "create"
+    },
+    "features/tree-sitter-query.md": {
+      "created": "2025-12-15T20:46:32.881093",
+      "sources": [
+        "inspect_query.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:32.881101",
+      "last_action": "create"
+    },
+    "modules/inspect-query.md": {
+      "created": "2025-12-15T20:46:32.881190",
+      "sources": [
+        "inspect_query.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:32.881194",
+      "last_action": "create"
+    },
+    "api/inspect-ts-binding.md": {
+      "created": "2025-12-15T20:46:35.493612",
+      "sources": [
+        "inspect_ts_binding.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:35.493622",
+      "last_action": "create"
+    },
+    "features/inspect-ts-binding.md": {
+      "created": "2025-12-15T20:46:35.493708",
+      "sources": [
+        "inspect_ts_binding.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:35.493711",
+      "last_action": "create"
+    },
+    "features/inspect-ts-module.md": {
+      "created": "2025-12-15T20:46:38.673593",
+      "sources": [
+        "inspect_ts_module.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:38.673603",
+      "last_action": "create"
+    },
+    "modules/inspect_ts_module.md": {
+      "created": "2025-12-15T20:46:38.673739",
+      "sources": [
+        "inspect_ts_module.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:38.673744",
+      "last_action": "create"
+    },
+    "features/test-doc-integration.md": {
+      "created": "2025-12-15T20:46:41.525042",
+      "sources": [
+        "test_doc_integration.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:41.525051",
+      "last_action": "create"
+    },
+    "modules/test-doc-integration.md": {
+      "created": "2025-12-15T20:46:41.525139",
+      "sources": [
+        "test_doc_integration.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:41.525142",
+      "last_action": "create"
+    },
+    "api/test_dependency_mapper.md": {
+      "created": "2025-12-15T20:46:43.222822",
+      "sources": [
+        "test_dependency_mapper.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:43.222829",
+      "last_action": "create"
+    },
+    "api/test_polyglot.md": {
+      "created": "2025-12-15T20:46:47.105586",
+      "sources": [
+        "test_polyglot.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:47.105595",
+      "last_action": "create"
+    },
+    "modules/test-polyglot.md": {
+      "created": "2025-12-15T20:46:47.105689",
+      "sources": [
+        "test_polyglot.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:47.105692",
+      "last_action": "create"
+    },
+    "features/polyglot-analyzer-tests.md": {
+      "created": "2025-12-15T20:46:47.105783",
+      "sources": [
+        "test_polyglot.ts"
+      ],
+      "last_updated": "2025-12-15T20:46:47.105786",
       "last_action": "create"
     }
   },

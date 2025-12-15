@@ -14,20 +14,29 @@ Low-level API documentation for all functions, classes, and interfaces.
 - **[Cicd Cli](cicd-cli.md)** - Technical API documentation
 - **[Code Analyzer](code-analyzer.md)** - Technical API documentation
 - **[Database](database.md)** - Technical API documentation
+- **[Debug_Api](debug_api.md)** - Technical API documentation
+- **[Debug_Ts](debug_ts.md)** - Technical API documentation
+- **[Dependency Mapper](dependency-mapper.md)** - Technical API documentation
 - **[Diagram Generator](diagram-generator.md)** - Technical API documentation
+- **[Dump_Go_Tree](dump_go_tree.md)** - Technical API documentation
 - **[Email Service](email-service.md)** - Technical API documentation
+- **[Generate Docs](generate-docs.md)** - Technical API documentation
+- **[Inspect Ts Binding](inspect-ts-binding.md)** - Technical API documentation
 - **[Llm](llm.md)** - Technical API documentation
 - **[Notifications](notifications.md)** - Technical API documentation
 - **[Pages Manager Ts](pages-manager-ts.md)** - Technical API documentation
 - **[Pages Manager](pages-manager.md)** - Technical API documentation
 - **[Payment Processor](payment-processor.md)** - Technical API documentation
 - **[Payments](payments.md)** - Technical API documentation
+- **[Polyglot Analyzer](polyglot-analyzer.md)** - Technical API documentation
 - **[Send Notifications](send-notifications.md)** - Technical API documentation
 - **[Site Generator](site-generator.md)** - Technical API documentation
 - **[Test Diagram Generator](test-diagram-generator.md)** - Technical API documentation
+- **[Test_Dependency_Mapper](test_dependency_mapper.md)** - Technical API documentation
+- **[Test_Polyglot](test_polyglot.md)** - Technical API documentation
 - **[Wiki Manager](wiki-manager.md)** - Technical API documentation
 
-**Total:** 16 API pages
+**Total:** 25 API pages
 
 ---
 

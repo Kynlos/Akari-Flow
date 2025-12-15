@@ -1,0 +1,854 @@
+[
+  {
+    "file": ".github/scripts/code-analyzer.py",
+    "language": "python",
+    "quality_score": {
+      "total": 75,
+      "documentation": 25,
+      "complexity": 10,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 25,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for function '_get_maintainability_details' at line 242",
+              "Missing doc for class 'CodeAnalyzer' at line 48",
+              "Missing doc for function '__init__' at line 49",
+              "Missing doc for function '_get_grade' at line 267",
+              "Missing doc for function '_get_average_function_length' at line 254",
+              "Missing doc for function 'main' at line 370"
+            ],
+            "count": 6
+          }
+        },
+        "complexity": {
+          "score": 10,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "B+"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "nested_loops",
+        "severity": "MEDIUM",
+        "description": "Potential nested_loops performance issue",
+        "line": 285,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 69,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 151,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 153,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 289,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 310,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 395,
+        "suggestion": "Review algorithmic complexity"
+      }
+    ]
+  },
+  {
+    "file": ".github/scripts/generate-docs.py",
+    "language": "python",
+    "quality_score": {
+      "total": 80,
+      "documentation": 30,
+      "complexity": 10,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 30,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for function 'ment' at line 320"
+            ],
+            "count": 1
+          }
+        },
+        "complexity": {
+          "score": 10,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "A-"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 207,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 212,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 217,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 222,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 249,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 334,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 362,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 448,
+        "suggestion": "Review algorithmic complexity"
+      }
+    ]
+  },
+  {
+    "file": ".github/scripts/polyglot/__init__.py",
+    "language": "python",
+    "quality_score": {
+      "total": 70,
+      "documentation": 0,
+      "complexity": 30,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 30,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "B"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": ".github/scripts/polyglot/dependency_mapper.py",
+    "language": "python",
+    "quality_score": {
+      "total": 75,
+      "documentation": 25,
+      "complexity": 10,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 25,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for class 'DependencyMapper' at line 5",
+              "Missing doc for function '__init__' at line 6"
+            ],
+            "count": 2
+          }
+        },
+        "complexity": {
+          "score": 10,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "B+"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "nested_loops",
+        "severity": "MEDIUM",
+        "description": "Potential nested_loops performance issue",
+        "line": 14,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 15,
+        "suggestion": "Review algorithmic complexity"
+      }
+    ]
+  },
+  {
+    "file": ".github/scripts/polyglot/polyglot_analyzer.py",
+    "language": "python",
+    "quality_score": {
+      "total": 80,
+      "documentation": 25,
+      "complexity": 15,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 25,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for class 'PolyglotAnalyzer' at line 16",
+              "Missing doc for function '__init__' at line 17",
+              "Missing doc for function '_get_import_query_for_lang' at line 180"
+            ],
+            "count": 3
+          }
+        },
+        "complexity": {
+          "score": 15,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "A-"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "check_imports.py",
+    "language": "python",
+    "quality_score": {
+      "total": 50,
+      "documentation": 0,
+      "complexity": 10,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 10,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "C-"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "debug_api.py",
+    "language": "python",
+    "quality_score": {
+      "total": 62,
+      "documentation": 2,
+      "complexity": 20,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 2,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 20,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "C+"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "debug_api_cursor.py",
+    "language": "python",
+    "quality_score": {
+      "total": 52,
+      "documentation": 2,
+      "complexity": 10,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 2,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 10,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "C-"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "debug_polyglot.py",
+    "language": "python",
+    "quality_score": {
+      "total": 57,
+      "documentation": 2,
+      "complexity": 15,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 2,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 15,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "C"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "debug_ts.py",
+    "language": "python",
+    "quality_score": {
+      "total": 55,
+      "documentation": 0,
+      "complexity": 15,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 15,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "C"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "debug_ts_query.py",
+    "language": "python",
+    "quality_score": {
+      "total": 60,
+      "documentation": 0,
+      "complexity": 20,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 20,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "C+"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "dump_go_tree.py",
+    "language": "python",
+    "quality_score": {
+      "total": 65,
+      "documentation": 0,
+      "complexity": 25,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 25,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "B-"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "dump_ts_tree.py",
+    "language": "python",
+    "quality_score": {
+      "total": 60,
+      "documentation": 0,
+      "complexity": 20,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 20,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "C+"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "inspect_parser.py",
+    "language": "python",
+    "quality_score": {
+      "total": 50,
+      "documentation": 0,
+      "complexity": 10,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 10,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "C-"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "inspect_query.py",
+    "language": "python",
+    "quality_score": {
+      "total": 58,
+      "documentation": 3,
+      "complexity": 15,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 3,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 15,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "C"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "inspect_ts_binding.py",
+    "language": "python",
+    "quality_score": {
+      "total": 50,
+      "documentation": 0,
+      "complexity": 10,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 10,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "C-"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "inspect_ts_module.py",
+    "language": "python",
+    "quality_score": {
+      "total": 55,
+      "documentation": 0,
+      "complexity": 15,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 15,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "C"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "test_doc_integration.py",
+    "language": "python",
+    "quality_score": {
+      "total": 73,
+      "documentation": 8,
+      "complexity": 25,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 8,
+          "max": 30,
+          "details": {
+            "missing": [],
+            "count": 0
+          }
+        },
+        "complexity": {
+          "score": 25,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "B"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "tests/test_dependency_mapper.py",
+    "language": "python",
+    "quality_score": {
+      "total": 65,
+      "documentation": 0,
+      "complexity": 25,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for class 'TestDependencyMapper' at line 19",
+              "Missing doc for function 'test_scan_and_link' at line 45",
+              "Missing doc for function 'tearDown' at line 42",
+              "Missing doc for function 'setUp' at line 20"
+            ],
+            "count": 4
+          }
+        },
+        "complexity": {
+          "score": 25,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "B-"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": "tests/test_polyglot.py",
+    "language": "python",
+    "quality_score": {
+      "total": 70,
+      "documentation": 0,
+      "complexity": 30,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for class 'TestPolyglotAnalyzer' at line 13",
+              "Missing doc for function 'setUp' at line 14",
+              "Missing doc for function 'test_typescript_extraction' at line 56",
+              "Missing doc for function 'test_python_extraction' at line 17",
+              "Missing doc for function 'test_go_extraction' at line 34",
+              "Missing doc for function 'test_python_imports' at line 74",
+              "Missing doc for function 'test_ts_imports' at line 86",
+              "Missing doc for function 'test_go_imports' at line 95"
+            ],
+            "count": 8
+          }
+        },
+        "complexity": {
+          "score": 30,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "B"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  }
+]

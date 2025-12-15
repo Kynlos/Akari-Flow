@@ -14,16 +14,24 @@ Module architecture and design documentation.
 - **[Code Analyzer](code-analyzer.md)** - Module architecture and design
 - **[Data Layer](data-layer.md)** - Module architecture and design
 - **[Debug Import](debug-import.md)** - Module architecture and design
+- **[Dependency Mapper](dependency-mapper.md)** - Module architecture and design
 - **[Diagram Generator](diagram-generator.md)** - Module architecture and design
 - **[Email Service](email-service.md)** - Module architecture and design
+- **[Generate Docs](generate-docs.md)** - Module architecture and design
+- **[Inspect Query](inspect-query.md)** - Module architecture and design
+- **[Inspect_Ts_Module](inspect_ts_module.md)** - Module architecture and design
 - **[Llm](llm.md)** - Module architecture and design
 - **[Notification System](notification-system.md)** - Module architecture and design
 - **[Pages Manager](pages-manager.md)** - Module architecture and design
 - **[Payment Processor](payment-processor.md)** - Module architecture and design
+- **[Polyglot Analyzer](polyglot-analyzer.md)** - Module architecture and design
+- **[Polyglot_Analysis](polyglot_analysis.md)** - Module architecture and design
 - **[Test Diagram Generator](test-diagram-generator.md)** - Module architecture and design
+- **[Test Doc Integration](test-doc-integration.md)** - Module architecture and design
+- **[Test Polyglot](test-polyglot.md)** - Module architecture and design
 - **[Wiki Manager](wiki-manager.md)** - Module architecture and design
 
-**Total:** 12 modules
+**Total:** 20 modules
 
 ---
 

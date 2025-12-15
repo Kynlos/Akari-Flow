@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-12-13T23:08:33.284859",
+  "last_updated": "2025-12-15T20:45:55.537043",
   "description": "Persistent mapping of source files to Wiki pages. DO NOT DELETE - used by wiki-manager.py to ensure consistency.",
   "file_to_page": {
     "email-service.ts": "Email-Service",
@@ -20,7 +20,25 @@
     "site_generator.ts": "Site-Generator",
     "cicd-cli.py": "Cicd-Cli",
     "debug_import.py": "Debug-Import",
-    "test_diagram_generator.ts": "Testing-Guide"
+    "test_diagram_generator.ts": "Testing-Guide",
+    "__init__.ts": "--Init--",
+    "dependency_mapper.ts": "Dependency-Mapper",
+    "polyglot_analyzer.ts": "Polyglot-Analyzer",
+    "check_imports.py": "Check-Imports",
+    "debug_api.py": "Debug-Api",
+    "debug_api_cursor.py": "Debug-Api-Cursor",
+    "debug_polyglot.py": "Debug-Polyglot",
+    "debug_ts.py": "Debug-Ts",
+    "debug_ts_query.py": "Debug-Ts-Query",
+    "dump_go_tree.py": "Dump-Go-Tree",
+    "dump_ts_tree.py": "Dump-Ts-Tree",
+    "inspect_parser.py": "Inspect-Parser",
+    "inspect_query.py": "Inspect-Query",
+    "inspect_ts_binding.py": "Inspect-Ts-Binding",
+    "inspect_ts_module.py": "Inspect-Ts-Module",
+    "test_doc_integration.py": "Testing-Guide",
+    "test_dependency_mapper.ts": "Testing-Guide",
+    "test_polyglot.ts": "Testing-Guide"
   },
   "page_metadata": {
     "Email-Service": {
@@ -42,7 +60,7 @@
       "files": [
         "generate-docs.ts"
       ],
-      "last_updated": "2025-12-13T22:46:43.941260"
+      "last_updated": "2025-12-15T20:45:41.124297"
     },
     "Notification-Service": {
       "created": "2025-11-15T18:45:30.577850",
@@ -71,7 +89,7 @@
       "files": [
         "code-analyzer.ts"
       ],
-      "last_updated": "2025-12-13T22:39:40.661930"
+      "last_updated": "2025-12-15T20:45:41.124080"
     },
     "Pages-Manager": {
       "created": "2025-11-15T23:03:21.724815",
@@ -139,9 +157,117 @@
     "Testing-Guide": {
       "created": "2025-12-13T22:46:45.110163",
       "files": [
-        "test_diagram_generator.ts"
+        "test_diagram_generator.ts",
+        "test_doc_integration.py",
+        "test_dependency_mapper.ts",
+        "test_polyglot.ts"
       ],
-      "last_updated": "2025-12-13T22:46:45.110169"
+      "last_updated": "2025-12-15T20:45:55.537032"
+    },
+    "--Init--": {
+      "created": "2025-12-15T20:45:41.428774",
+      "files": [
+        "__init__.ts"
+      ],
+      "last_updated": "2025-12-15T20:45:41.428779"
+    },
+    "Dependency-Mapper": {
+      "created": "2025-12-15T20:45:41.738684",
+      "files": [
+        "dependency_mapper.ts"
+      ],
+      "last_updated": "2025-12-15T20:45:41.738691"
+    },
+    "Polyglot-Analyzer": {
+      "created": "2025-12-15T20:45:42.014341",
+      "files": [
+        "polyglot_analyzer.ts"
+      ],
+      "last_updated": "2025-12-15T20:45:42.014347"
+    },
+    "Check-Imports": {
+      "created": "2025-12-15T20:45:42.286018",
+      "files": [
+        "check_imports.py"
+      ],
+      "last_updated": "2025-12-15T20:45:42.286024"
+    },
+    "Debug-Api": {
+      "created": "2025-12-15T20:45:42.559694",
+      "files": [
+        "debug_api.py"
+      ],
+      "last_updated": "2025-12-15T20:45:42.559699"
+    },
+    "Debug-Api-Cursor": {
+      "created": "2025-12-15T20:45:42.777675",
+      "files": [
+        "debug_api_cursor.py"
+      ],
+      "last_updated": "2025-12-15T20:45:42.777681"
+    },
+    "Debug-Polyglot": {
+      "created": "2025-12-15T20:45:43.008306",
+      "files": [
+        "debug_polyglot.py"
+      ],
+      "last_updated": "2025-12-15T20:45:43.008312"
+    },
+    "Debug-Ts": {
+      "created": "2025-12-15T20:45:43.257085",
+      "files": [
+        "debug_ts.py"
+      ],
+      "last_updated": "2025-12-15T20:45:43.257091"
+    },
+    "Debug-Ts-Query": {
+      "created": "2025-12-15T20:45:43.503339",
+      "files": [
+        "debug_ts_query.py"
+      ],
+      "last_updated": "2025-12-15T20:45:43.503345"
+    },
+    "Dump-Go-Tree": {
+      "created": "2025-12-15T20:45:43.714045",
+      "files": [
+        "dump_go_tree.py"
+      ],
+      "last_updated": "2025-12-15T20:45:43.714050"
+    },
+    "Dump-Ts-Tree": {
+      "created": "2025-12-15T20:45:43.961679",
+      "files": [
+        "dump_ts_tree.py"
+      ],
+      "last_updated": "2025-12-15T20:45:43.961683"
+    },
+    "Inspect-Parser": {
+      "created": "2025-12-15T20:45:44.205018",
+      "files": [
+        "inspect_parser.py"
+      ],
+      "last_updated": "2025-12-15T20:45:44.205024"
+    },
+    "Inspect-Query": {
+      "created": "2025-12-15T20:45:44.551979",
+      "files": [
+        "inspect_query.py"
+      ],
+      "last_updated": "2025-12-15T20:45:44.551985"
+    },
+    "Inspect-Ts-Binding": {
+      "created": "2025-12-15T20:45:44.775310",
+      "files": [
+        "inspect_ts_binding.py"
+      ],
+      "last_updated": "2025-12-15T20:45:44.775314"
+    },
+    "Inspect-Ts-Module": {
+      "created": "2025-12-15T20:45:45.021370",
+      "files": [
+        "inspect_ts_module.py"
+      ],
+      "last_updated": "2025-12-15T20:45:45.021377"
     }
   }
 }

@@ -1,0 +1,56 @@
+---
+title: Inspect Ts Module
+layout: default
+---
+
+# inspect_ts_module.py
+
+*Auto-generated from `inspect_ts_module.py`*
+
+# inspect_ts_module
+
+> **NOTE** – This file is a *demo script* rather than a reusable library.  
+> It shows how to introspect the `tree_sitter` Python bindings, create a
+> `Language` instance from the bundled `tree_sitter_python` parser, and
+> build a simple query that matches Python function definitions.
+
+---
+
+## 1. Overview
+
+`inspect_ts_module.py` performs the following steps:
+
+1. Imports the `tree_sitter` package and the bundled `tree_sitter_python` parser.
+2. Prints the public attributes of the `tree_sitter` module (`dir(tree_sitter)`).
+3. If the `QueryCursor` class is available, prints its public attributes.
+4. Creates a `Language` instance from the Python parser.
+5. Builds a `Query` that matches all `function_definition` nodes in a Python AST.
+6. Prints the public attributes of the created `Query` object.
+
+The script is intended for debugging or educational purposes – it shows how the
+Tree‑Sitter API can be used from Python and what objects are exposed.
+
+---
+
+## 2. Exports
+
+| Export | Type | Description |
+|--------|------|-------------|
+| **None** | – | The module does not expose any functions, classes, or interfaces. It is a standalone script. |
+
+---
+
+## 3. Usage Examples
+
+### 3.1 Running the script
+
+```bash
+$ python inspect_ts_module.py
+```
+
+Typical output (exact names may vary with the installed `tree_sitter` version):
+
+```
+tree_sitter dir: ['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', 'Language', 'Query', 'QueryCursor', 'Tree', 'TreeCursor', 'TreeCursorType', 'TreeSitterError', 'tree_sitter']
+Has QueryCursor
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'matches', 'next', 'reset', 'search', 'search_all', 'search_all_in', 'search_in', 'search_next', 'search_next_in', 'search_next_in_range', 'search_next_in_range_in', 'search_next_in_range_in_range', 'search_next_in_range_in_range_in', 'search_next_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in', 'search_next_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in', 'search_next_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range', 'search_next_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range_in_range

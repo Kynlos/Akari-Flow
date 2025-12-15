@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 
 
+## [2025-12-15]
+
+### code-analyzer.py
+
+### ⚠️ BREAKING CHANGES
+- Removed exported class: ASTAnalyzer
+- Removed exported function: visit_AsyncFunctionDef
+- Removed exported function: visit_FunctionDef
+- Removed exported function: visit_ClassDef
+- Removed exported function: visit_If
+- Removed exported function: visit_For
+- Removed exported function: visit_While
+- Removed exported function: analyze
+- Removed exported function: visit_Try
+- Removed exported function: visit_ExceptHandler
+### 🗑️ Removed
+- `visit_Try` (function)
+- `visit_ExceptHandler` (function)
+- `analyze` (function)
+- `visit_FunctionDef` (function)
+- `visit_AsyncFunctionDef` (function)
+- `ASTAnalyzer` (class)
+- `visit_ClassDef` (function)
+- `visit_If` (function)
+- `visit_For` (function)
+- `visit_While` (function)
+
+### dependency_mapper.py
+
+### ✨ Added
+- `DependencyMapper` (class)
+- `analyze_file` (function)
+- `build_graph` (function)
+- `scan_workspace` (function)
+
+### polyglot_analyzer.py
+
+### ✨ Added
+- `PolyglotAnalyzer` (class)
+- `extract_symbols` (function)
+- `parse` (function)
+- `extract_imports` (function)
+
+### test_dependency_mapper.py
+
+### ✨ Added
+- `TestDependencyMapper` (class)
+- `test_scan_and_link` (function)
+- `setUp` (function)
+- `tearDown` (function)
+
+### test_polyglot.py
+
+### ✨ Added
+- `TestPolyglotAnalyzer` (class)
+- `test_typescript_extraction` (function)
+- `test_python_extraction` (function)
+- `test_go_extraction` (function)
+- `setUp` (function)
+- `test_python_imports` (function)
+- `test_ts_imports` (function)
+- `test_go_imports` (function)
+
 ## [2025-12-13]
 
 ## [2025-12-13]
