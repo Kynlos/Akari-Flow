@@ -86,8 +86,8 @@ We've massively upgraded the system to be faster, safer, and more visual:
 
 ```bash
 # 1. Clone this repo
-git clone https://github.com/Kynlos/CI-CD-Monitor-Test.git
-cd CI-CD-Monitor-Test
+git clone https://github.com/Kynlos/Akari-Flow.git
+cd Akari-Flow
 
 # 2. Copy workflows to your repo
 cp -r .github <your-repo>/

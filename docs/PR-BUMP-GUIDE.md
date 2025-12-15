@@ -82,7 +82,7 @@ Add authentication system
 ⚠️ Urgency
 This PR is marked as urgent/blocked/priority
 
-📂 Repository: Kynlos/CI-CD-Monitor-Test
+📂 Repository: Kynlos/Akari-Flow
 🔗 Link: [View PR]
 
 @here (if urgent)
@@ -98,7 +98,7 @@ Add authentication system
 
 ⚠️ This PR is marked as urgent/blocked/priority
 
-Repository: Kynlos/CI-CD-Monitor-Test | Requested by: username
+Repository: Kynlos/Akari-Flow | Requested by: username
 
 [View PR] (primary button if urgent)
 ```

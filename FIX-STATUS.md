@@ -13,7 +13,7 @@ The `pages-manager.py` needs additional changes that haven't been committed yet.
 ## 🔧 What To Do Now
 
 **Option 1: Run workflow with current code (limited functionality)**
-- Go to https://github.com/Kynlos/CI-CD-Monitor-Test/actions/workflows/regenerate-all-docs.yml
+- Go to https://github.com/Kynlos/Akari-Flow/actions/workflows/regenerate-all-docs.yml
 - Click "Run workflow"
 - JSON parsing is fixed, but you'll still only get API docs (no Features/Modules)
 
@@ -25,8 +25,8 @@ The `pages-manager.py` needs additional changes that haven't been committed yet.
 ## Current State
 
 Pages currently showing "No content yet":
-- https://kynlos.github.io/CI-CD-Monitor-Test/modules/ ❌
-- https://kynlos.github.io/CI-CD-Monitor-Test/features/ ❌
+- https://kynlos.github.io/Akari-Flow/modules/ ❌
+- https://kynlos.github.io/Akari-Flow/features/ ❌
 
 These will populate once the complete fix is applied and workflow runs.
 
