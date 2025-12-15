@@ -455,7 +455,9 @@ def process_documentation_to_wiki(doc_files: List[str]):
              print(f"  ⚠️  Source file not found, using: {actual_source}")
         
         # Determine wiki page
-        page_name = manager.determine_wiki_page(actual_source, source_content)
+        # Use source content for context, but fallback to doc content if source not found
+        context_content = source_content if source_content else content
+        page_name = manager.determine_wiki_page(actual_source, context_content)
         
         # Update wiki page
         success = manager.update_wiki_page(page_name, content)
