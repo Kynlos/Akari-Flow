@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-12-15T20:49:29.797927",
+  "last_updated": "2025-12-15T20:50:19.895796",
   "file_to_page": {
     "pages-manager.ts": [
       "api/pages-manager.md",
@@ -483,7 +483,7 @@
       "sources": [
         "wiki-manager.ts"
       ],
-      "last_updated": "2025-12-15T20:49:29.795945",
+      "last_updated": "2025-12-15T20:50:19.893720",
       "last_action": "create"
     },
     "modules/wiki-manager.md": {
@@ -491,7 +491,7 @@
       "sources": [
         "wiki-manager.ts"
       ],
-      "last_updated": "2025-12-15T20:49:29.796236",
+      "last_updated": "2025-12-15T20:50:19.893860",
       "last_action": "create"
     },
     "features/wiki-manager.md": {
@@ -499,7 +499,7 @@
       "sources": [
         "wiki-manager.ts"
       ],
-      "last_updated": "2025-12-15T20:49:29.796106",
+      "last_updated": "2025-12-15T20:50:19.894026",
       "last_action": "create"
     },
     "api/generate-docs.md": {
