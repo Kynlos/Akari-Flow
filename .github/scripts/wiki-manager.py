@@ -422,30 +422,37 @@ def process_documentation_to_wiki(doc_files: List[str]):
         # Determine source file (doc filename is based on source)
         # e.g., docs/auth.md → auth.ts
         doc_path = Path(doc_file)
-        source_file = doc_path.stem + '.ts'  # Assume .ts for now
-        
         # Try to find actual source file
-        possible_sources = [
-            source_file,
-            Path('src') / source_file,
-            doc_path.stem + '.js',
-            doc_path.stem + '.py'
+        search_paths = [
+            Path('.'),
+            Path('src'),
+            Path('.github/scripts'),
+            Path('scripts'),
+            Path('.github/workflows') 
         ]
+        
+        extensions = ['.ts', '.py', '.js', '.go', '.rs', '.java']
         
         actual_source = None
         source_content = ""
         
-        for possible in possible_sources:
-            if os.path.exists(str(possible)):
-                actual_source = str(possible)
-                with open(actual_source, 'r') as f:
-                    source_content = f.read()
-                break
+        # Check all combinations
+        for search_path in search_paths:
+            if actual_source: break
+            
+            for ext in extensions:
+                possible = search_path / (doc_path.stem + ext)
+                if possible.exists():
+                    actual_source = str(possible)
+                    with open(actual_source, 'r', encoding='utf-8') as f:
+                        source_content = f.read()
+                    break
         
         if not actual_source:
-            # Fallback: use doc filename
-            actual_source = source_file
-            print(f"  ⚠️  Source file not found, using: {actual_source}")
+             # Fallback: use doc filename but try to guess original if possible from file content?
+             # For now, default to .ts if unknown
+             actual_source = doc_path.stem + '.ts'
+             print(f"  ⚠️  Source file not found, using: {actual_source}")
         
         # Determine wiki page
         page_name = manager.determine_wiki_page(actual_source, source_content)
