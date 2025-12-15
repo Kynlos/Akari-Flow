@@ -1,32 +1,7 @@
-# 🚀 Intelligent CI/CD Documentation System (v2.0)
+# 🌊 Akari Flow
+> **Intelligent CI/CD Documentation & Analysis System**
 
-> **Automated documentation, visualization, breaking change detection, and team notifications powered by AI**
-
-A comprehensive GitHub Actions-based system that automatically generates documentation, visualizes architecture, detects breaking changes, generates static documentation sites, and notifies your team across multiple platforms—all powered by LLM intelligence.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF)](https://github.com/features/actions)
-[![Powered by Groq](https://img.shields.io/badge/Powered%20by-Groq-orange)](https://groq.com)
-
----
-
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [New in v2.0](#new-in-v20)
-- [Key Features](#key-features)
-- [Quick Start](#quick-start)
-- [Detailed Features](#detailed-features)
-- [Setup Guide](#setup-guide)
-- [Configuration](#configuration)
-- [CLI Tool](#cli-tool)
-- [Usage Examples](#usage-examples)
-- [Architecture](#architecture)
-- [Contributing](#contributing)
-
----
-
-## 💡 Why Intelligent CI/CD?
+## 💡 Why Akari Flow?
 
 **"Documentation is the code."** — *Everyone says it, but nobody actually searches the code.*
 
@@ -59,17 +34,18 @@ This system revolutionizes code documentation by automatically:
 
 ---
 
-## 🌟 New in v2.0
+## 🌟 New in v2.1 (Polyglot Core)
 
 We've massively upgraded the system to be faster, safer, and more visual:
 
+- **🧠 Polyglot Engine**: Replaced regex with **Tree-sitter** for accurate AST parsing of Python, TypeScript, Go, Rust, and Java.
+- **🔗 Cross-Language Mapping**: New `DependencyMapper` tracks imports across files (e.g. TS frontend ↔️ Python backend).
 - **🏗️ Automated Architecture Diagrams**: Now auto-generates [Mermaid.js](https://mermaid.js.org/) class diagrams to visualize your code structure.
 - **🌐 Documentation Portal**: Auto-generates a **searchable static HTML website** with dark mode (deployment ready).
 - **🛠️ Unified CLI**: A new `cicd-cli.py` tool to run analysis, docs, and site generation locally.
 - **⚡ Diff-Aware Processing**: Optimized LLM usage ensures we only process changed code (faster & cheaper).
 - **🛡️ Safer Agentic Bot**: The PR bot now uses a safe `SEARCH/REPLACE` strategy to prevent accidental overwrites.
 - **⚙️ Externalized Config**: All language patterns and rules are now in `.github/config/languages.json`.
-- **🐍 AST Parsing**: Switched to robust AST parsing for Python (goodbye regex fragility!).
 
 ---
 

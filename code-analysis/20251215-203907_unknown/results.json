@@ -1,0 +1,46 @@
+[
+  {
+    "file": "tests/test_polyglot.py",
+    "language": "python",
+    "quality_score": {
+      "total": 70,
+      "documentation": 0,
+      "complexity": 30,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 0,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for class 'TestPolyglotAnalyzer' at line 13",
+              "Missing doc for function 'test_go_extraction' at line 34",
+              "Missing doc for function 'test_python_extraction' at line 17",
+              "Missing doc for function 'test_typescript_extraction' at line 56",
+              "Missing doc for function 'setUp' at line 14",
+              "Missing doc for function 'test_python_imports' at line 74",
+              "Missing doc for function 'test_ts_imports' at line 86",
+              "Missing doc for function 'test_go_imports' at line 95"
+            ],
+            "count": 8
+          }
+        },
+        "complexity": {
+          "score": 30,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "B"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  }
+]

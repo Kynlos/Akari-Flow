@@ -20,7 +20,12 @@ import ast
 import hashlib
 from pathlib import Path
 from datetime import datetime
+from datetime import datetime
 import requests
+
+# Add polyglot path
+sys.path.append(os.path.join(os.path.dirname(__file__), 'polyglot'))
+from polyglot_analyzer import PolyglotAnalyzer
 
 # Load Config
 CONFIG_PATH = Path(__file__).parent.parent / 'config' / 'languages.json'
@@ -42,60 +47,45 @@ def get_file_hash(content):
     return hashlib.sha256(content.encode('utf-8')).hexdigest()
 
 def extract_symbols_detailed(content, file_path):
-    """Extract symbols with detailed information using AST for Python, Regex for others"""
-    symbols = []
-    ext = Path(file_path).suffix.lower()
-    
-    # Python AST Parsing
-    if ext == '.py':
-        try:
-            tree = ast.parse(content)
-            for node in ast.walk(tree):
-                if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
-                    params = ', '.join(arg.arg for arg in node.args.args)
-                    symbols.append({
-                        'type': 'function',
-                        'name': node.name,
-                        'params': params,
-                        'returns': 'Any', # AST doesn't always have easy return type inference without type hints
-                        'exported': not node.name.startswith('_'),
-                        'signature': f"def {node.name}({params})",
-                        'lineno': node.lineno
-                    })
-                elif isinstance(node, ast.ClassDef):
-                     symbols.append({
-                        'type': 'class',
-                        'name': node.name,
-                        'exported': not node.name.startswith('_'),
-                        'signature': f"class {node.name}",
-                        'lineno': node.lineno
-                    })
-            return symbols
-        except:
-             pass # Fallback to regex if parsing fails (e.g. syntax error in PR)
-
-    # Regex Parsing (Fallback & Other Langs)
-    # Functions
-    for match in re.finditer(r'^(export\s+)?(?:async\s+)?function\s+(\w+)\s*\(([^)]*)\)(?:\s*:\s*([^{;]+))?', content, re.MULTILINE):
-        symbols.append({
-            'type': 'function',
-            'name': match.group(2),
-            'params': match.group(3).strip() if match.group(3) else '',
-            'returns': match.group(4).strip() if match.group(4) else 'void',
-            'exported': bool(match.group(1)),
-            'signature': match.group(0).strip()
-        })
-    
-    # Classes
-    for match in re.finditer(r'^(export\s+)?class\s+(\w+)', content, re.MULTILINE):
-        symbols.append({
-            'type': 'class',
-            'name': match.group(2),
-            'exported': bool(match.group(1)),
-            'signature': match.group(0).strip()
-        })
-    
-    return symbols
+    """Extract symbols using PolyglotAnalyzer"""
+    try:
+        analyzer = PolyglotAnalyzer()
+        ext = Path(file_path).suffix
+        raw_symbols = analyzer.extract_symbols(content, ext)
+        
+        symbols = []
+        for sym in raw_symbols:
+            # Map Polyglot fields to detailed fields
+            # Polyglot: {name, kind, line, end_line, signature}
+            # Expected: {type, name, params, returns, exported, signature, lineno}
+            
+            # Heuristic for exported
+            exported = True
+            if sym['kind'] == 'function':
+                if ext == '.py' and sym['name'].startswith('_'): exported = False
+                elif ext == '.go' and not sym['name'][0].isupper(): exported = False
+                # TS/JS: Hard to know without specific query for 'export' keyword
+                # For now assume exported if top level
+            
+            # Heuristic for params/returns from signature
+            # (Very basic string parsing, can be improved later with better Tree-sitter queries)
+            params = "..."
+            returns = "Any"
+            
+            symbols.append({
+                'type': sym['kind'], # function/class
+                'name': sym['name'],
+                'params': params,
+                'returns': returns,
+                'exported': exported,
+                'signature': sym['signature'],
+                'lineno': sym['line']
+            })
+            
+        return symbols
+    except Exception as e:
+        print(f"Polyglot extraction error for {file_path}: {e}")
+        return []
 
 def detect_breaking_changes(old_content, new_content, file_path):
     """Detect breaking changes between versions"""

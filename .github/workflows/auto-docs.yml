@@ -57,6 +57,13 @@ jobs:
       - name: Install dependencies
         run: |
           pip install requests
+          pip install tree-sitter
+          pip install tree-sitter-python
+          pip install tree-sitter-javascript
+          pip install tree-sitter-typescript
+          pip install tree-sitter-go
+          pip install tree-sitter-rust
+          pip install tree-sitter-java
       
       - name: Detect changed files
         id: changes
