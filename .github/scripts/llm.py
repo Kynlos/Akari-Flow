@@ -19,8 +19,18 @@ CACHE_DIR = Path('.llm-cache')
 
 
 class LLMClient:
-    def __init__(self, api_key: str = None):
-        self.api_key = api_key or GROQ_API_KEY
+    def __init__(self, api_key: str = None, base_url: str = None):
+        # Prioritize constructor args, then LLM_* env vars, then GROQ_* fallbacks
+        self.api_key = (
+            api_key 
+            or os.environ.get('LLM_API_KEY') 
+            or GROQ_API_KEY
+        )
+        self.base_url = (
+            base_url 
+            or os.environ.get('LLM_BASE_URL') 
+            or GROQ_API_URL
+        )
         self.cache_dir = CACHE_DIR
         self.cache_dir.mkdir(exist_ok=True)
     
@@ -78,7 +88,7 @@ class LLMClient:
                     payload['response_format'] = {'type': 'json_object'}
                 
                 response = requests.post(
-                    GROQ_API_URL,
+                    self.base_url,
                     headers={
                         'Authorization': f'Bearer {self.api_key}',
                         'Content-Type': 'application/json'

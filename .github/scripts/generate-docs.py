@@ -22,6 +22,7 @@ from pathlib import Path
 from datetime import datetime
 from datetime import datetime
 import requests
+from llm import get_client
 
 # Add polyglot path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'polyglot'))
@@ -39,8 +40,7 @@ if CONFIG_PATH.exists():
         pass
 
 GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
-GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'
-MODEL = 'openai/gpt-oss-20b'
+# MODEL = 'openai/gpt-oss-20b'
 
 def get_file_hash(content):
     """Generate SHA256 hash of content"""
@@ -162,26 +162,18 @@ Include:
 Be thorough but concise. Format as GitHub-flavored Markdown."""
 
     try:
-        response = requests.post(
-            GROQ_API_URL,
-            headers={
-                'Authorization': f'Bearer {GROQ_API_KEY}',
-                'Content-Type': 'application/json'
-            },
-            json={
-                'model': MODEL,
-                'messages': [
-                    {'role': 'system', 'content': 'You are a technical documentation expert.'},
-                    {'role': 'user', 'content': prompt}
-                ],
-                'temperature': 0.3,
-                'max_tokens': 2000
-            },
-            timeout=30
+        response = get_client().call_chat(
+            model='openai/gpt-oss-20b',
+            messages=[
+                {'role': 'system', 'content': 'You are a technical documentation expert.'},
+                {'role': 'user', 'content': prompt}
+            ],
+            temperature=0.3,
+            max_tokens=2000
         )
         
-        if response.status_code == 200:
-            return response.json()['choices'][0]['message']['content']
+        if response:
+            return response
         else:
             return f"Error generating docs: {response.status_code}"
     except Exception as e:

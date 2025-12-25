@@ -16,12 +16,12 @@ import requests
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Optional
+from llm import get_client
 
 GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 GITHUB_REPO = os.environ.get('GITHUB_REPOSITORY')  # owner/repo
-GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'
-MODEL = 'openai/gpt-oss-120b'  # Use more powerful model for better content decisions
+# MODEL = 'openai/gpt-oss-120b' # Handled by call_chat defaults or override
 
 # Persistent mapping file (committed to repo)
 MAPPING_FILE = '.github/wiki-mapping.json'
@@ -141,26 +141,18 @@ Examples:
 Return ONLY the wiki page name, nothing else."""
 
         try:
-            response = requests.post(
-                GROQ_API_URL,
-                headers={
-                    'Authorization': f'Bearer {GROQ_API_KEY}',
-                    'Content-Type': 'application/json'
-                },
-                json={
-                    'model': MODEL,
-                    'messages': [
-                        {'role': 'system', 'content': 'You are a documentation expert. Return only the wiki page name.'},
-                        {'role': 'user', 'content': prompt}
-                    ],
-                    'temperature': 0.1,
-                    'max_tokens': 50
-                },
-                timeout=15
+            response = get_client().call_chat(
+                model='openai/gpt-oss-120b',
+                messages=[
+                    {'role': 'system', 'content': 'You are a documentation expert. Return only the wiki page name.'},
+                    {'role': 'user', 'content': prompt}
+                ],
+                temperature=0.1,
+                max_tokens=50
             )
             
-            if response.status_code == 200:
-                page_name = response.json()['choices'][0]['message']['content'].strip()
+            if response:
+                page_name = response.strip()
                 # Clean up response (remove quotes, extra text)
                 page_name = page_name.strip('"\'`').split('\n')[0].strip()
                 print(f"  ✓ LLM decision: {file_path} → {page_name}")
@@ -274,26 +266,18 @@ Return the COMPLETE merged wiki page.
 """
 
         try:
-            response = requests.post(
-                GROQ_API_URL,
-                headers={
-                    'Authorization': f'Bearer {GROQ_API_KEY}',
-                    'Content-Type': 'application/json'
-                },
-                json={
-                    'model': MODEL,
-                    'messages': [
-                        {'role': 'system', 'content': 'You are a wiki editor. Return clean markdown.'},
-                        {'role': 'user', 'content': prompt}
-                    ],
-                    'temperature': 0.3,
-                    'max_tokens': 4000
-                },
-                timeout=45
+            response = get_client().call_chat(
+                model='openai/gpt-oss-120b',
+                messages=[
+                    {'role': 'system', 'content': 'You are a wiki editor. Return clean markdown.'},
+                    {'role': 'user', 'content': prompt}
+                ],
+                temperature=0.3,
+                max_tokens=4000
             )
             
-            if response.status_code == 200:
-                merged = response.json()['choices'][0]['message']['content'].strip()
+            if response:
+                merged = response.strip()
                 
                 # Clean up if LLM wrapped in code fences
                 if merged.startswith('```markdown'):

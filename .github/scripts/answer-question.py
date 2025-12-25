@@ -10,12 +10,12 @@ import sys
 import re
 from pathlib import Path
 import requests
+from llm import get_client
 
 GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
 COMMENT_BODY = os.environ.get('COMMENT_BODY', '')
 COMMENT_USER = os.environ.get('COMMENT_USER', 'user')
-GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'
-MODEL = 'openai/gpt-oss-20b'
+# MODEL = 'openai/gpt-oss-20b'
 
 def should_respond(comment_text):
     """Check if this comment is asking the bot a question"""
@@ -90,32 +90,24 @@ Question from @{COMMENT_USER}:
 Provide a clear, helpful answer based on the code shown above. If the question asks about something not visible in the code, say so. Be concise but thorough."""
 
     try:
-        response = requests.post(
-            GROQ_API_URL,
-            headers={
-                'Authorization': f'Bearer {GROQ_API_KEY}',
-                'Content-Type': 'application/json'
-            },
-            json={
-                'model': MODEL,
-                'messages': [
-                    {
-                        'role': 'system',
-                        'content': 'You are a helpful code review assistant. Answer questions about code changes clearly and concisely.'
-                    },
-                    {
-                        'role': 'user',
-                        'content': prompt
-                    }
-                ],
-                'temperature': 0.3,
-                'max_tokens': 1500
-            },
-            timeout=30
+        response = get_client().call_chat(
+            model='openai/gpt-oss-20b',
+            messages=[
+                {
+                    'role': 'system',
+                    'content': 'You are a helpful code review assistant. Answer questions about code changes clearly and concisely.'
+                },
+                {
+                    'role': 'user',
+                    'content': prompt
+                }
+            ],
+            temperature=0.3,
+            max_tokens=1500
         )
         
-        if response.status_code == 200:
-            return response.json()['choices'][0]['message']['content']
+        if response:
+            return response
         else:
             return f"❌ Error generating response: {response.status_code}"
     except Exception as e:

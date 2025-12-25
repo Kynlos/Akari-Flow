@@ -14,13 +14,13 @@ import json
 import subprocess
 from pathlib import Path
 import requests
+from llm import get_client
 
 GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
 COMMENT_BODY = os.environ.get('COMMENT_BODY', '')
 COMMENT_USER = os.environ.get('COMMENT_USER', 'user')
 PR_AUTHOR = os.environ.get('PR_AUTHOR', '')
 PR_ASSIGNEES = os.environ.get('PR_ASSIGNEES', '')
-GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions'
 MODEL = 'openai/gpt-oss-120b'
 
 def is_authorized(user):
@@ -54,26 +54,20 @@ Respond ONLY with JSON:
 }}"""
 
     try:
-        response = requests.post(
-            GROQ_API_URL,
-            headers={
-                'Authorization': f'Bearer {GROQ_API_KEY}',
-                'Content-Type': 'application/json'
-            },
-            json={
-                'model': 'openai/gpt-oss-20b', # Use smaller model for classification
-                'messages': [
-                    {'role': 'system', 'content': 'You are a PR intent classifier. Respond only with valid JSON.'},
-                    {'role': 'user', 'content': prompt}
-                ],
-                'temperature': 0.1,
-                'max_tokens': 200
-            },
-            timeout=30
+    try:
+        response = get_client().call_chat(
+            model='openai/gpt-oss-20b',
+            messages=[
+                {'role': 'system', 'content': 'You are a PR intent classifier. Respond only with valid JSON.'},
+                {'role': 'user', 'content': prompt}
+            ],
+            temperature=0.1,
+            max_tokens=200,
+            response_format='json'
         )
         
-        if response.status_code == 200:
-            content = response.json()['choices'][0]['message']['content']
+        if response:
+            content = response
             # Extract JSON from response
             json_match = re.search(r'\{[^}]+\}', content, re.DOTALL)
             if json_match:
@@ -146,26 +140,19 @@ with changes applied
 Response:"""
 
     try:
-        response = requests.post(
-            GROQ_API_URL,
-            headers={
-                'Authorization': f'Bearer {GROQ_API_KEY}',
-                'Content-Type': 'application/json'
-            },
-            json={
-                'model': MODEL,
-                'messages': [
-                    {'role': 'system', 'content': 'You are a precise code editing assistant. Use SEARCH/REPLACE format.'},
-                    {'role': 'user', 'content': prompt}
-                ],
-                'temperature': 0.1, # Low temp for precision
-                'max_tokens': 4000
-            },
-            timeout=60
+    try:
+        response = get_client().call_chat(
+            model=MODEL,
+            messages=[
+                {'role': 'system', 'content': 'You are a precise code editing assistant. Use SEARCH/REPLACE format.'},
+                {'role': 'user', 'content': prompt}
+            ],
+            temperature=0.1,
+            max_tokens=4000
         )
         
-        if response.status_code == 200:
-            return response.json()['choices'][0]['message']['content']
+        if response:
+            return response
     except Exception as e:
         print(f"ERROR generating changes: {e}")
     
