@@ -48,10 +48,6 @@ class LLMClient:
         Returns:
             Response text or None on failure
         """
-        if not self.api_key:
-            print("⚠️  No API key configured")
-            return None
-        
         # Generate cache key
         cache_key = None
         if use_cache:
@@ -87,12 +83,14 @@ class LLMClient:
                 if response_format == 'json':
                     payload['response_format'] = {'type': 'json_object'}
                 
+                # Prepare headers
+                headers = {'Content-Type': 'application/json'}
+                if self.api_key:
+                    headers['Authorization'] = f'Bearer {self.api_key}'
+                
                 response = requests.post(
                     self.base_url,
-                    headers={
-                        'Authorization': f'Bearer {self.api_key}',
-                        'Content-Type': 'application/json'
-                    },
+                    headers=headers,
                     json=payload,
                     timeout=timeout
                 )
