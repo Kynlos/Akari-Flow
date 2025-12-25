@@ -92,10 +92,10 @@ cd Akari-Flow
 # 2. Copy workflows to your repo
 cp -r .github <your-repo>/
 
-# 3. Add required secret in GitHub Settings > Secrets > Actions
-# 3. Add required secret in GitHub Settings > Secrets > Actions
-# GROQ_API_KEY = <your-api-key>
-# (Optional) LLM_BASE_URL = <your-provider-url>
+# 3. Configure GitHub Settings > Secrets and variables > Actions
+#   - New Repository Secret: GROQ_API_KEY (or LLM_API_KEY)
+#   - New Repository Variable: LLM_BASE_URL (Optional, for custom providers)
+#   - New Repository Variable: LLM_MODEL (Optional, e.g. "llama3")
 
 # 4. Push a code change and watch the magic! ✨
 git add .
