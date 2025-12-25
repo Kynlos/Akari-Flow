@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-12-15T20:50:16.644016",
+  "last_updated": "2025-12-25T19:42:46.664477",
   "description": "Persistent mapping of source files to Wiki pages. DO NOT DELETE - used by wiki-manager.py to ensure consistency.",
   "file_to_page": {
     "email-service.ts": "Email-Service",
@@ -39,7 +39,10 @@
     "test_doc_integration.py": "Testing-Guide",
     "test_dependency_mapper.ts": "Testing-Guide",
     "test_polyglot.ts": "Testing-Guide",
-    ".github/scripts/wiki-manager.py": "Wiki-Manager"
+    ".github/scripts/wiki-manager.py": "Wiki-Manager",
+    ".github/scripts/agentic-bot.py": "Agentic-Bot",
+    ".github/scripts/answer-question.py": "Answer-Question",
+    ".github/scripts/generate-docs.py": "Generate-Docs"
   },
   "page_metadata": {
     "Email-Service": {
@@ -52,9 +55,10 @@
     "Agentic-Bot": {
       "created": "2025-11-14T23:44:51.106934",
       "files": [
-        "agentic-bot.ts"
+        "agentic-bot.ts",
+        ".github/scripts/agentic-bot.py"
       ],
-      "last_updated": "2025-11-15T18:49:11.216788"
+      "last_updated": "2025-12-25T19:42:46.261915"
     },
     "Documentation-Generation": {
       "created": "2025-11-14T23:44:51.255242",
@@ -84,7 +88,7 @@
         "wiki-manager.ts",
         ".github/scripts/wiki-manager.py"
       ],
-      "last_updated": "2025-12-15T20:50:16.644010"
+      "last_updated": "2025-12-25T19:42:46.664473"
     },
     "Code-Analyzer": {
       "created": "2025-11-15T21:15:34.219798",
@@ -270,6 +274,20 @@
         "inspect_ts_module.py"
       ],
       "last_updated": "2025-12-15T20:45:45.021377"
+    },
+    "Answer-Question": {
+      "created": "2025-12-25T19:42:46.457938",
+      "files": [
+        ".github/scripts/answer-question.py"
+      ],
+      "last_updated": "2025-12-25T19:42:46.457943"
+    },
+    "Generate-Docs": {
+      "created": "2025-12-25T19:42:46.664013",
+      "files": [
+        ".github/scripts/generate-docs.py"
+      ],
+      "last_updated": "2025-12-25T19:42:46.664017"
     }
   }
 }

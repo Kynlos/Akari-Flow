@@ -1,0 +1,251 @@
+[
+  {
+    "file": ".github/scripts/agentic-bot.py",
+    "language": "python",
+    "quality_score": {
+      "total": 85,
+      "documentation": 30,
+      "complexity": 15,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 30,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for function 'in()' at line 243"
+            ],
+            "count": 1
+          }
+        },
+        "complexity": {
+          "score": 15,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": [
+            "1 lines exceed 120 characters"
+          ]
+        }
+      },
+      "grade": "A"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 173,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 220,
+        "suggestion": "Review algorithmic complexity"
+      }
+    ]
+  },
+  {
+    "file": ".github/scripts/answer-question.py",
+    "language": "python",
+    "quality_score": {
+      "total": 85,
+      "documentation": 30,
+      "complexity": 15,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 30,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for function '   p' at line 116"
+            ],
+            "count": 1
+          }
+        },
+        "complexity": {
+          "score": 15,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": [
+            "3 lines exceed 120 characters"
+          ]
+        }
+      },
+      "grade": "A"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": []
+  },
+  {
+    "file": ".github/scripts/generate-docs.py",
+    "language": "python",
+    "quality_score": {
+      "total": 80,
+      "documentation": 30,
+      "complexity": 10,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 30,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for function 'ment' at line 312"
+            ],
+            "count": 1
+          }
+        },
+        "complexity": {
+          "score": 10,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "A-"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 199,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 204,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 209,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 214,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 241,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 326,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 354,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 440,
+        "suggestion": "Review algorithmic complexity"
+      }
+    ]
+  },
+  {
+    "file": ".github/scripts/wiki-manager.py",
+    "language": "python",
+    "quality_score": {
+      "total": 80,
+      "documentation": 30,
+      "complexity": 10,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 30,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for class 'WikiManager' at line 30",
+              "Missing doc for function '__init__' at line 31"
+            ],
+            "count": 2
+          }
+        },
+        "complexity": {
+          "score": 10,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": [
+            "1 lines exceed 120 characters"
+          ]
+        }
+      },
+      "grade": "A-"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 305,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 396,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 471,
+        "suggestion": "Review algorithmic complexity"
+      }
+    ]
+  }
+]

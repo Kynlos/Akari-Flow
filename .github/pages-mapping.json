@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "last_updated": "2025-12-15T20:50:19.895796",
+  "last_updated": "2025-12-25T19:42:59.526297",
   "file_to_page": {
     "pages-manager.ts": [
       "api/pages-manager.md",
@@ -153,6 +153,16 @@
       "api/test_polyglot.md",
       "modules/test-polyglot.md",
       "features/polyglot-analyzer-tests.md"
+    ],
+    "agentic-bot.ts": [
+      "api/agentic-bot.md",
+      "features/agentic-pr-bot.md",
+      "modules/agentic-bot.md"
+    ],
+    "answer-question.ts": [
+      "api/answer-question.md",
+      "features/answer-question.md",
+      "modules/answer-question.md"
     ]
   },
   "page_metadata": {
@@ -483,7 +493,7 @@
       "sources": [
         "wiki-manager.ts"
       ],
-      "last_updated": "2025-12-15T20:50:19.893720",
+      "last_updated": "2025-12-25T19:42:59.524250",
       "last_action": "create"
     },
     "modules/wiki-manager.md": {
@@ -491,7 +501,7 @@
       "sources": [
         "wiki-manager.ts"
       ],
-      "last_updated": "2025-12-15T20:50:19.893860",
+      "last_updated": "2025-12-25T19:42:59.524392",
       "last_action": "create"
     },
     "features/wiki-manager.md": {
@@ -499,7 +509,7 @@
       "sources": [
         "wiki-manager.ts"
       ],
-      "last_updated": "2025-12-15T20:50:19.894026",
+      "last_updated": "2025-12-25T19:42:59.524543",
       "last_action": "create"
     },
     "api/generate-docs.md": {
@@ -507,7 +517,7 @@
       "sources": [
         "generate-docs.ts"
       ],
-      "last_updated": "2025-12-15T20:46:01.894203",
+      "last_updated": "2025-12-25T19:42:54.353673",
       "last_action": "create"
     },
     "modules/generate-docs.md": {
@@ -515,7 +525,7 @@
       "sources": [
         "generate-docs.ts"
       ],
-      "last_updated": "2025-12-15T20:46:01.894324",
+      "last_updated": "2025-12-25T19:42:54.353813",
       "last_action": "create"
     },
     "features/auto-docs-generator.md": {
@@ -523,8 +533,8 @@
       "sources": [
         "generate-docs.ts"
       ],
-      "last_updated": "2025-12-15T20:46:01.894433",
-      "last_action": "create"
+      "last_updated": "2025-12-25T19:42:57.603033",
+      "last_action": "modify"
     },
     "modules/polyglot_analysis.md": {
       "created": "2025-12-15T20:46:04.017823",
@@ -773,6 +783,54 @@
         "test_polyglot.ts"
       ],
       "last_updated": "2025-12-15T20:46:47.105786",
+      "last_action": "create"
+    },
+    "api/agentic-bot.md": {
+      "created": "2025-12-25T19:42:49.339649",
+      "sources": [
+        "agentic-bot.ts"
+      ],
+      "last_updated": "2025-12-25T19:42:49.339654",
+      "last_action": "create"
+    },
+    "features/agentic-pr-bot.md": {
+      "created": "2025-12-25T19:42:49.339746",
+      "sources": [
+        "agentic-bot.ts"
+      ],
+      "last_updated": "2025-12-25T19:42:49.339749",
+      "last_action": "create"
+    },
+    "modules/agentic-bot.md": {
+      "created": "2025-12-25T19:42:49.339832",
+      "sources": [
+        "agentic-bot.ts"
+      ],
+      "last_updated": "2025-12-25T19:42:49.339836",
+      "last_action": "create"
+    },
+    "api/answer-question.md": {
+      "created": "2025-12-25T19:42:51.769114",
+      "sources": [
+        "answer-question.ts"
+      ],
+      "last_updated": "2025-12-25T19:42:51.769118",
+      "last_action": "create"
+    },
+    "features/answer-question.md": {
+      "created": "2025-12-25T19:42:51.769232",
+      "sources": [
+        "answer-question.ts"
+      ],
+      "last_updated": "2025-12-25T19:42:51.769236",
+      "last_action": "create"
+    },
+    "modules/answer-question.md": {
+      "created": "2025-12-25T19:42:51.769334",
+      "sources": [
+        "answer-question.ts"
+      ],
+      "last_updated": "2025-12-25T19:42:51.769338",
       "last_action": "create"
     }
   },

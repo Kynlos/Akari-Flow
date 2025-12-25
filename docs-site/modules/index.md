@@ -10,6 +10,8 @@ Module architecture and design documentation.
 
 ## Available Modules
 
+- **[Agentic Bot](agentic-bot.md)** - Module architecture and design
+- **[Answer Question](answer-question.md)** - Module architecture and design
 - **[Auth System](auth-system.md)** - Module architecture and design
 - **[Code Analyzer](code-analyzer.md)** - Module architecture and design
 - **[Data Layer](data-layer.md)** - Module architecture and design
@@ -31,7 +33,7 @@ Module architecture and design documentation.
 - **[Test Polyglot](test-polyglot.md)** - Module architecture and design
 - **[Wiki Manager](wiki-manager.md)** - Module architecture and design
 
-**Total:** 20 modules
+**Total:** 22 modules
 
 ---
 

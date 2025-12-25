@@ -10,6 +10,8 @@ Low-level API documentation for all functions, classes, and interfaces.
 
 ## Available APIs
 
+- **[Agentic Bot](agentic-bot.md)** - Technical API documentation
+- **[Answer Question](answer-question.md)** - Technical API documentation
 - **[Authentication](authentication.md)** - Technical API documentation
 - **[Cicd Cli](cicd-cli.md)** - Technical API documentation
 - **[Code Analyzer](code-analyzer.md)** - Technical API documentation
@@ -36,7 +38,7 @@ Low-level API documentation for all functions, classes, and interfaces.
 - **[Test_Polyglot](test_polyglot.md)** - Technical API documentation
 - **[Wiki Manager](wiki-manager.md)** - Technical API documentation
 
-**Total:** 25 API pages
+**Total:** 27 API pages
 
 ---
 

@@ -7,35 +7,39 @@ layout: default
 
 *Auto-generated from `.github/scripts/generate-docs.py`*
 
-# Advanced Auto‑Documentation Generator  
-**File:** `generate-docs.py`  
-**Purpose:**  
-A CI/CD helper that automatically:
+# Advanced Auto‑Documentation Generator – `generate‑docs.py`
 
-1. Detects breaking changes in source files.  
-2. Generates Markdown documentation for changed modules using the Groq LLM.  
-3. Builds a class‑diagram (Mermaid) for each file.  
-4. Updates `CHANGELOG.md` with a diff‑aware entry.  
-5. Emits a single PR comment that summarizes breaking changes, new docs, and changelog snippets.
+> **What this module does**  
+> `generate‑docs.py` is a CI‑friendly script that automatically produces API documentation, changelog entries, and PR comments for any code files that have changed in a Git repository. It works by:
+> 1. Detecting which files changed (`changed_files.txt` is expected to be produced by a CI job).  
+> 2. Extracting symbols from each file with **PolyglotAnalyzer** (Python, Go, TS/JS, Rust, Java, C/C++ …).  
+> 3. Comparing the old and new versions to surface breaking changes.  
+> 4. Sending the file content (and a diff preview) to a Groq LLM to generate Markdown documentation.  
+> 5. Writing the docs to `docs/<file>.md`, updating `CHANGELOG.md`, and creating a PR comment (`doc_output.md`).
 
-> **Why use it?**  
-> When a PR touches code, this script guarantees that the public API is fully documented, the changelog stays up‑to‑date, and any breaking changes are highlighted for reviewers.
+> **Key features**  
+> * Diff‑aware documentation – only changed files are processed.  
+> * Breaking‑change detection with auto‑labeling.  
+> * Cross‑file impact analysis placeholder.  
+> * Mermaid class diagram generation (via `diagram_generator`).  
+> * Caching via `.github/doc_cache.json` to skip unchanged files.  
+> * Configurable via `config/languages.json` and environment variables (`GROQ_API_KEY`, `LLM_MODEL`).  
 
 ---
 
 ## Exports
 
-| Function | Description |
-|----------|-------------|
-| `get_file_hash(content: str) -> str` | Returns a SHA‑256 hash of the file content. |
-| `extract_symbols_detailed(content: str, file_path: str) -> List[dict]` | Uses `PolyglotAnalyzer` to extract exported symbols (functions, classes, etc.) with metadata. |
-| `detect_breaking_changes(old_content: str, new_content: str, file_path: str) -> dict` | Compares two file versions and reports removed or signature‑changed exports. |
-| `get_git_diff(file_path: str) -> str` | Returns the `git diff` between the last two commits for the given file. |
-| `generate_documentation(file_context: str, file_path: str) -> str` | Calls the Groq API to produce Markdown documentation for the file. |
-| `generate_changelog_entry(file_path: str, old_content: str, new_content: str, breaking_info: dict) -> Optional[str]` | Builds a changelog snippet for a single file. |
-| `update_changelog(entries: List[dict]) -> None` | Inserts new entries into `CHANGELOG.md`. |
-| `generate_smart_pr_comment(code_files: List[str], doc_files: List[str], breaking_changes: List[dict], impacts: List[dict], changelog_entries: List[dict]) -> str` | Produces the final PR comment that reviewers see. |
-| `main() -> None` | Orchestrates the whole workflow. |
+| Function | Purpose |
+|----------|---------|
+| `get_file_hash(content)` | Compute SHA‑256 hash of a file’s content. |
+| `extract_symbols_detailed(content, file_path)` | Use `PolyglotAnalyzer` to extract a detailed symbol list (name, type, signature, exported flag, etc.). |
+| `detect_breaking_changes(old_content, new_content, file_path)` | Compare two file versions and return a dict describing any breaking changes. |
+| `get_git_diff(file_path)` | Run `git diff HEAD~1 HEAD <file>` and return the diff string. |
+| `generate_documentation(file_context, file_path)` | Call the LLM to produce Markdown documentation for a file. |
+| `generate_changelog_entry(file_path, old_content, new_content, breaking_info)` | Build a changelog snippet for a single file (returns `None` if no entry is needed). |
+| `update_changelog(entries)` | Insert new entries into `CHANGELOG.md`. |
+| `generate_smart_pr_comment(code_files, doc_files, breaking_changes, impacts, changelog_entries)` | Produce the final PR comment that reviewers see, summarising changes, docs, and impacts. |
+| `main()` | Orchestrates the whole workflow: reads changed files, generates docs, updates changelog, and writes the PR comment. |
 
 ---
 
@@ -73,121 +77,10 @@ import json
 import importlib.util, sys
 spec = importlib.util.spec_from_file_location("gen", ".github/scripts/generate-docs.py")
 gen = importlib.util.module_from_spec(spec)
+sys.modules["gen"] = gen
 spec.loader.exec_module(gen)
 
-# Call the function
-old = open("old_file.py").read()
-new = open("new_file.py").read()
-info = gen.detect_breaking_changes(old, new, "old_file.py")
-print(json.dumps(info, indent=2))
+print(gen.detect_breaking_changes.__doc__)
 ```
 
-### 3. Using the helper in a custom script
-
-```python
-from .github_scripts.generate_docs import get_file_hash, extract_symbols_detailed
-
-content = open("src/utils.py").read()
-print("Hash:", get_file_hash(content))
-
-symbols = extract_symbols_detailed(content, "src/utils.py")
-for sym in symbols:
-    print(f"{sym['type']} {sym['name']} exported={sym['exported']}")
-```
-
----
-
-## Parameters & Return Values
-
-### `get_file_hash(content: str) -> str`
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `content` | `str` | Raw file content. |
-
-| Return | Type | Description |
-|--------|------|-------------|
-| `hash` | `str` | 64‑character SHA‑256 hex digest. |
-
----
-
-### `extract_symbols_detailed(content: str, file_path: str) -> List[dict]`
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `content` | `str` | Raw file content. |
-| `file_path` | `str` | Path used to determine the language extension. |
-
-| Return | Type | Description |
-|--------|------|-------------|
-| `symbols` | `List[dict]` | Each dict contains: <br>• `type` (e.g., `"function"`, `"class"`) <br>• `name` <br>• `params` (string) <br>• `returns` (string) <br>• `exported` (bool) <br>• `signature` (raw signature string) <br>• `lineno` (int). |
-
----
-
-### `detect_breaking_changes(old_content: str, new_content: str, file_path: str) -> dict`
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `old_content` | `str` | Previous version of the file. |
-| `new_content` | `str` | Current version of the file. |
-| `file_path` | `str` | Path used for diagnostics. |
-
-| Return | Type | Description |
-|--------|------|-------------|
-| `info` | `dict` | `{'has_breaking': bool, 'changes': List[dict]}`. Each change dict contains: <br>• `type` (`"removed"` or `"signature_change"`) <br>• `symbol` <br>• `severity` (`"BREAKING"`) <br>• `message` <br>• optional `old` / `new` signatures. |
-
----
-
-### `get_git_diff(file_path: str) -> str`
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `file_path` | `str` | Path to the file relative to the repo root. |
-
-| Return | Type | Description |
-|--------|------|-------------|
-| `diff` | `str` | Raw `git diff` output between `HEAD~1` and `HEAD`. Returns an empty string if diff cannot be obtained. |
-
----
-
-### `generate_documentation(file_context: str, file_path: str) -> str`
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `file_context` | `str` | Markdown snippet that includes the file name, diff, and source code. |
-| `file_path` | `str` | Path used only for logging. |
-
-| Return | Type | Description |
-|--------|------|-------------|
-| `doc` | `str` | Markdown documentation produced by the Groq LLM. On error, returns an error message string. |
-
----
-
-### `generate_changelog_entry(file_path: str, old_content: str, new_content: str, breaking_info: dict) -> Optional[str]`
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `file_path` | `str` | Path of the file. |
-| `old_content` | `str` | Previous version. |
-| `new_content` | `str` | Current version. |
-| `breaking_info` | `dict` | Output of `detect_breaking_changes`. |
-
-| Return | Type | Description |
-|--------|------|-------------|
-| `entry` | `Optional[str]` | Markdown snippet for the changelog, or `None` if nothing changed. |
-
----
-
-### `update_changelog(entries: List[dict]) -> None`
-
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `entries` | `List[dict]` | Each dict: `{'file': str, 'content': str}`. |
-
-| Return | Type | Description |
-|--------|------|-------------|
-| `None` | – | The function writes to `CHANGELOG.md`. |
-
----
-
-### `generate_smart_pr_comment(code_files: List[str],
+*Last updated: 2025-12-25*

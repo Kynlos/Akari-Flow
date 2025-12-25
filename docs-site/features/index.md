@@ -10,6 +10,8 @@ User-facing feature documentation and guides.
 
 ## Available Features
 
+- **[Agentic Pr Bot](agentic-pr-bot.md)** - Feature guide and tutorial
+- **[Answer Question](answer-question.md)** - Feature guide and tutorial
 - **[Auth System](auth-system.md)** - Feature guide and tutorial
 - **[Authentication](authentication.md)** - Feature guide and tutorial
 - **[Auto Docs Generator](auto-docs-generator.md)** - Feature guide and tutorial
@@ -42,7 +44,7 @@ User-facing feature documentation and guides.
 - **[Tree Sitter Query](tree-sitter-query.md)** - Feature guide and tutorial
 - **[Wiki Manager](wiki-manager.md)** - Feature guide and tutorial
 
-**Total:** 31 features
+**Total:** 33 features
 
 ---
 

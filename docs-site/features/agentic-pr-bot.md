@@ -1,3 +1,8 @@
+---
+title: Agentic Pr Bot
+layout: default
+---
+
 # agentic-bot.py
 
 *Auto-generated from `.github/scripts/agentic-bot.py`*
