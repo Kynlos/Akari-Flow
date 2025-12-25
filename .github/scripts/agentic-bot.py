@@ -21,7 +21,7 @@ COMMENT_BODY = os.environ.get('COMMENT_BODY', '')
 COMMENT_USER = os.environ.get('COMMENT_USER', 'user')
 PR_AUTHOR = os.environ.get('PR_AUTHOR', '')
 PR_ASSIGNEES = os.environ.get('PR_ASSIGNEES', '')
-MODEL = 'openai/gpt-oss-120b'
+MODEL = os.environ.get('LLM_MODEL', 'openai/gpt-oss-120b')
 
 def is_authorized(user):
     """Check if user is authorized to trigger actions"""

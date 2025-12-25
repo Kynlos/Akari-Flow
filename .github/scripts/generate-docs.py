@@ -40,7 +40,7 @@ if CONFIG_PATH.exists():
         pass
 
 GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
-# MODEL = 'openai/gpt-oss-20b'
+MODEL = os.environ.get('LLM_MODEL', 'openai/gpt-oss-20b')
 
 def get_file_hash(content):
     """Generate SHA256 hash of content"""
@@ -163,7 +163,7 @@ Be thorough but concise. Format as GitHub-flavored Markdown."""
 
     try:
         response = get_client().call_chat(
-            model='openai/gpt-oss-20b',
+            model=MODEL,
             messages=[
                 {'role': 'system', 'content': 'You are a technical documentation expert.'},
                 {'role': 'user', 'content': prompt}

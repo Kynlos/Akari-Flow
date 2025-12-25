@@ -21,7 +21,8 @@ from llm import get_client
 GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
 GITHUB_TOKEN = os.environ.get('GITHUB_TOKEN')
 GITHUB_REPO = os.environ.get('GITHUB_REPOSITORY')  # owner/repo
-# MODEL = 'openai/gpt-oss-120b' # Handled by call_chat defaults or override
+# Use more powerful model for better content decisions, default to Groq
+MODEL = os.environ.get('LLM_MODEL', 'openai/gpt-oss-120b')
 
 # Persistent mapping file (committed to repo)
 MAPPING_FILE = '.github/wiki-mapping.json'
@@ -142,7 +143,7 @@ Return ONLY the wiki page name, nothing else."""
 
         try:
             response = get_client().call_chat(
-                model='openai/gpt-oss-120b',
+                model=MODEL,
                 messages=[
                     {'role': 'system', 'content': 'You are a documentation expert. Return only the wiki page name.'},
                     {'role': 'user', 'content': prompt}
@@ -267,7 +268,7 @@ Return the COMPLETE merged wiki page.
 
         try:
             response = get_client().call_chat(
-                model='openai/gpt-oss-120b',
+                model=MODEL,
                 messages=[
                     {'role': 'system', 'content': 'You are a wiki editor. Return clean markdown.'},
                     {'role': 'user', 'content': prompt}

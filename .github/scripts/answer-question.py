@@ -15,7 +15,7 @@ from llm import get_client
 GROQ_API_KEY = os.environ.get('GROQ_API_KEY')
 COMMENT_BODY = os.environ.get('COMMENT_BODY', '')
 COMMENT_USER = os.environ.get('COMMENT_USER', 'user')
-# MODEL = 'openai/gpt-oss-20b'
+MODEL = os.environ.get('LLM_MODEL', 'openai/gpt-oss-20b')
 
 def should_respond(comment_text):
     """Check if this comment is asking the bot a question"""
@@ -91,7 +91,7 @@ Provide a clear, helpful answer based on the code shown above. If the question a
 
     try:
         response = get_client().call_chat(
-            model='openai/gpt-oss-20b',
+            model=MODEL,
             messages=[
                 {
                     'role': 'system',
