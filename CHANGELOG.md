@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 
 ## [2025-12-25]
 
+### llm.py
+
+### ⚠️ BREAKING CHANGES
+- Removed exported function: , s: str) -> str:
+ 
+- Removed exported function:  text: str) -> str
+- Removed exported function: xt: str) -> str
+- Removed exported function:  str) -> str:
+  
+- Removed exported function: tr = None):
+- Removed exported function: elf, text: str) -> Opt
+- Removed exported function:    """Get 
+### ✨ Added
+- `, text: str) ->` (function)
+- `on(self, text: str) ->` (function)
+- `self, s: str) -> st` (function)
+- `n: str = No` (function)
+- `t:
+    """` (function)
+- `elf, text: str) ->` (function)
+- `ext: str) -> str` (function)
+### 🗑️ Removed
+- `xt: str) -> str` (function)
+- `elf, text: str) -> Opt` (function)
+- `, s: str) -> str:
+ ` (function)
+- `tr = None):` (function)
+- `   """Get ` (function)
+- ` text: str) -> str` (function)
+- ` str) -> str:
+  ` (function)
+
+## [2025-12-25]
+
 ## [2025-12-15]
 
 ## [2025-12-15]

@@ -1,0 +1,56 @@
+[
+  {
+    "file": ".github/scripts/llm.py",
+    "language": "python",
+    "quality_score": {
+      "total": 75,
+      "documentation": 25,
+      "complexity": 10,
+      "maintainability": 40,
+      "breakdown": {
+        "documentation": {
+          "score": 25,
+          "max": 30,
+          "details": {
+            "missing": [
+              "Missing doc for class 'LLMClient' at line 21",
+              "Missing doc for function 'call_chat' at line 37",
+              "Missing doc for function '__init__' at line 22"
+            ],
+            "count": 3
+          }
+        },
+        "complexity": {
+          "score": 10,
+          "max": 30,
+          "details": [
+            "Complexity calculation is currently keyword-based."
+          ]
+        },
+        "maintainability": {
+          "score": 40,
+          "max": 40,
+          "details": []
+        }
+      },
+      "grade": "B+"
+    },
+    "security_vulnerabilities": [],
+    "performance_issues": [
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 272,
+        "suggestion": "Review algorithmic complexity"
+      },
+      {
+        "type": "repeated_computation",
+        "severity": "MEDIUM",
+        "description": "Potential repeated_computation performance issue",
+        "line": 275,
+        "suggestion": "Review algorithmic complexity"
+      }
+    ]
+  }
+]
