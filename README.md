@@ -79,7 +79,7 @@ We've massively upgraded the system to be faster, safer, and more visual:
 
 ### Prerequisites
 - GitHub repository
-- [Groq API key](https://console.groq.com) (free tier available)
+- [LLM Provider API Key](https://console.groq.com) (Groq, OpenAI, Ollama, etc.)
 - Python 3.11+ (for local CLI)
 
 ### 5-Minute Setup
@@ -93,7 +93,9 @@ cd Akari-Flow
 cp -r .github <your-repo>/
 
 # 3. Add required secret in GitHub Settings > Secrets > Actions
-# GROQ_API_KEY = <your-groq-api-key>
+# 3. Add required secret in GitHub Settings > Secrets > Actions
+# GROQ_API_KEY = <your-api-key>
+# (Optional) LLM_BASE_URL = <your-provider-url>
 
 # 4. Push a code change and watch the magic! ✨
 git add .
@@ -142,10 +144,20 @@ All parsing rules, security patterns, and complexity keywords are now centralize
 }
 ```
 
-### LLM Model
-Edit `.github/scripts/generate-docs.py`:
-```python
-MODEL = 'openai/gpt-oss-20b' # or 'llama-3.1-70b-versatile'
+### LLM Provider Configuration // NEW
+You can now use **any** OpenAI-compatible provider (Groq, OpenAI, Ollama, LM Studio, etc.) by setting environment variables in your GitHub Actions or local environment:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `LLM_BASE_URL` | API Endpoint URL | `https://api.groq.com/openai/v1/chat/completions` |
+| `LLM_API_KEY` | Your API Key | `GROQ_API_KEY` (fallback) |
+| `LLM_MODEL` | Model name to use | `openai/gpt-oss-120b` (or similar default) |
+
+#### Example: Using Local Ollama
+```bash
+export LLM_BASE_URL="http://localhost:11434/v1/chat/completions"
+export LLM_API_KEY="ollama"
+export LLM_MODEL="llama3"
 ```
 
 ---
